@@ -1,0 +1,18 @@
+body{
+    height: 105vh;
+    width: 98.8vw;
+    background-image: url("C:\Users\weeksale\Documents\GitHub\final-project-alpha-wolf-squadron-aws\DataBaseWebsite\src\app\TheCow.PNG");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:  100vw 165vh;
+    background-color: red;
+    margin-top: -50px;
+    margin-bottom: -50px;
+    margin-right: 0px;
+    margin-left: -10px;
+}
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
