@@ -6,9 +6,6 @@ body{
     background-attachment: fixed;
     background-size:  100vw 165vh;
     margin-top: -50px;
-    margin-right: 50px;
-    margin-left: -10px;
-    
 }
 h1{
     background: linear-gradient(330deg, #ff0000 0%, #ffbb00 25%, #eeff00 50%, #5eff00 75%, #00fff2 100%);
