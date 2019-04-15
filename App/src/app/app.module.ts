@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { Page1Component } from './page1/page1.component';
-import { Page2Component } from './page2/page2.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RootNavigationComponent } from './root-navigation/root-navigation.component';
-import { Page3Component } from './page3/page3.component';
+import { UpdatePageComponent } from './update-page/update-page.component';
+import { DeletePageComponent } from './delete-page/delete-page.component';
+import { SearchPageComponent } from './search-page/search-page.component';
+import { CreatePageComponent } from './create-page/create-page.component';
+import { ReadPageComponent } from './read-page/read-page.component';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { Page3Component } from './page3/page3.component';
     AppComponent,
     HomePageComponent,
     LoginPageComponent,
-    Page1Component,
-    Page2Component,
     PageNotFoundComponent,
     RootNavigationComponent,
-    Page3Component
+    UpdatePageComponent,
+    DeletePageComponent,
+    SearchPageComponent,
+    CreatePageComponent,
+    ReadPageComponent
   ],
   imports: [
     BrowserModule,
