@@ -1,13 +1,4 @@
-body{
-    height: 105vh;
-    width: 98.8vw;
-    background-image: url("..\..\assets\JharensonTheEquador.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size:  100vw 165vh;
-    margin-top: -50px;
-}
-h1{
+h1 {
     background: linear-gradient(330deg, #ff0000 0%, #ffbb00 25%, #eeff00 50%, #5eff00 75%, #00fff2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -18,3 +9,11 @@ h1{
     font-style: italic;
 }
 
+body { 
+    background: url("..\..\assets\JharensonTheEquador.jpg") no-repeat center center fixed;
+    height: 105vh;
+    width: 99.31vw;   
+    margin-top:  0px;
+    margin-left: 0px;
+    overflow: hidden;
+  }
