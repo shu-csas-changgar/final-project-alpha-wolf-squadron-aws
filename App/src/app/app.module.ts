@@ -12,6 +12,7 @@ import { DeletePageComponent } from './delete-page/delete-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { ReadPageComponent } from './read-page/read-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ReadPageComponent } from './read-page/read-page.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
