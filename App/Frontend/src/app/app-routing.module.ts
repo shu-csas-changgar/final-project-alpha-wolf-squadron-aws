@@ -13,15 +13,17 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { ViewPageComponent } from './view-page/view-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
 {path:'', redirectTo: '/login', pathMatch: 'full'},
 {path:'home', component: HomePageComponent},
+{path:'login', component: LoginPageComponent},
 {path:'city', component: CityPageComponent},
 {path:'address', component: AddressPageComponent},
 {path:'county', component: CountryPageComponent},
 {path:'employee', component: EmployeePageComponent},
-{path:'invebtory', component: InventoryPageComponent},
+{path:'inventory', component: InventoryPageComponent},
 {path:'lease', component: LeasePageComponent},  
 {path:'office', component:  OfficePageComponent},
 {path:'room', component: RoomPageComponent},

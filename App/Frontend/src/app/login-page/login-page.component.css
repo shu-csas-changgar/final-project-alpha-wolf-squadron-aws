@@ -1,0 +1,79 @@
+body {   
+    height: 105vh;
+    width: 98.8vw;
+    background-image: url("../../assets/Alex.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:  100vw 165vh;
+    margin-top: -10px;
+    margin-bottom: -50px;
+}
+
+#container {
+    position: fixed;
+    width: 340px;
+    height: 285px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+    background: rgb(117, 201, 114);
+    border-radius: 3px;
+    border: 1px solid rgb(49, 114, 29);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    opacity: 0.8;
+}
+
+form {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+label {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 30px;
+}
+input {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    outline: none;
+}
+input[type=text],
+input[type=password] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #80df88;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(93, 255, 106, 0.4), 0 0 0 5px #8dff97;
+}
+#lower {
+    background: #8eff8a;
+    width: 100%;
+    height: 69px;
+    margin-top: 20px;
+}
+input[type=submit] {
+    margin-top: 20px;
+    margin-left: 35%;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: rgb(117, 201, 114); 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#acefac), to(#82e86e));
+    background-image: -moz-linear-gradient(top left 90deg, #acefac 0%, #82e86e 100%);
+    background-image: linear-gradient(top left 90deg, #acefac 0%, #82e86e 100%);
+    border-radius: 30px;
+    border: 1px solid #6fd666;
+    box-shadow: 0 1px 2px rgba(100, 172, 79, 0.295), inset 0 1px 0 rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
