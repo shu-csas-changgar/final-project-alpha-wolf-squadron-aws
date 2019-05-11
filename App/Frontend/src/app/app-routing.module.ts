@@ -13,16 +13,21 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { ViewPageComponent } from './view-page/view-page.component';
-import { RootNavigationComponent } from './root-navigation/root-navigation.component';
 
-const routes: Routes = [{path:'', redirectTo: '/login', pathMatch: 'full'},
+const routes: Routes = [
+{path:'', redirectTo: '/login', pathMatch: 'full'},
 {path:'home', component: HomePageComponent},
-{path:'login', component: LoginPageComponent},
-{path:'search', component: SearchPageComponent},
-{path:'read', component: ReadPageComponent},
-{path:'create', component: CreatePageComponent},
-{path:'delete', component: DeletePageComponent},
-{path:'update', component: UpdatePageComponent},
+{path:'city', component: CityPageComponent},
+{path:'address', component: AddressPageComponent},
+{path:'county', component: CountryPageComponent},
+{path:'employee', component: EmployeePageComponent},
+{path:'invebtory', component: InventoryPageComponent},
+{path:'lease', component: LeasePageComponent},  
+{path:'office', component:  OfficePageComponent},
+{path:'room', component: RoomPageComponent},
+{path:'type', component: TypePageComponent},
+{path:'vendor', component: VendorPageComponent},
+{path:'view', component: ViewPageComponent},
 {path:'**', component: PageNotFoundComponent}];
 
 @NgModule({
