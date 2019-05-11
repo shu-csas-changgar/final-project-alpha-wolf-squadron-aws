@@ -10,6 +10,9 @@ export class CountryPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
+
+
 
 }
