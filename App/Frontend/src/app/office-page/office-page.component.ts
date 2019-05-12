@@ -16,7 +16,7 @@ export class OfficePageComponent implements OnInit {
     name : new FormControl,
     phone_number : new FormControl,
     equipment_contact : new FormControl,
-    address_id : new FormControl
+    fk_address_id : new FormControl
   })
   constructor(private OfficeService: OfficeService) { }
 
