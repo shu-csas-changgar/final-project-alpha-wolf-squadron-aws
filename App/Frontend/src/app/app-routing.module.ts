@@ -23,7 +23,7 @@ const routes: Routes = [
 {path: 'crud', component: CrudPageComponent},
 {path:'city', component: CityPageComponent},
 {path:'address', component: AddressPageComponent},
-{path:'county', component: CountryPageComponent},
+{path:'country', component: CountryPageComponent},
 {path:'employee', component: EmployeePageComponent},
 {path:'inventory', component: InventoryPageComponent},
 {path:'lease', component: LeasePageComponent},  
