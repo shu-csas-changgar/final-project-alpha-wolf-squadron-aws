@@ -10,6 +10,7 @@ export class ViewPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

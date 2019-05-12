@@ -19,6 +19,7 @@ import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CrudPageComponent } from './crud-page/crud-page.component';
+import { EquipmentPageComponent } from './equipment-page/equipment-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CrudPageComponent } from './crud-page/crud-page.component';
     TypePageComponent,
     VendorPageComponent,
     LoginPageComponent,
-    CrudPageComponent
+    CrudPageComponent,
+    EquipmentPageComponent
   ],
   imports: [
     BrowserModule,
