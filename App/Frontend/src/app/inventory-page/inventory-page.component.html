@@ -8,6 +8,14 @@
       <th>Date Created</th>
       <th>Last Updated</th>
     </thead>
+    <tr tableCol *ngFor="let inventory of inventories">
+        <td>{{inventory.inventory_id}}</td>
+        <td>{{inventory.fk.equipment_id}}</td>
+        <td>{{inventory.fk_employee_id}}</td>
+        <td>{{inventory.fk_room_id}}</td>
+        <td>{{inventory.date_created}}</td>
+        <td>{{inventory.last_update}}</td>
+      </tr>
   </table>
   <form [formGroup]='inventoryForm' (ngSubmit)='createSubmit()'>
     <label>

@@ -11,6 +11,17 @@
       <th>Date Created</th>
       <th>Last Updated</th>
     </thead>
+    <tr tableCol *ngFor="let equipment of equipments">
+        <td>{{equipment.equipment_id}}</td>
+        <td>{{equipment.name}}</td>
+        <td>{{equipment.active}}</td>
+        <td>{{equipment.warranty_end_date}}</td>
+        <td>{{equipment.fk_lease_id}}</td>
+        <td>{{equipment.fk_vendor_id}}</td>
+        <td>{{equipment.fk_type_id}}</td>
+        <td>{{equipment.date_created}}</td>
+        <td>{{equipment.last_update}}</td>
+      </tr>
   </table>
   <form [formGroup]='equipmentForm' (ngSubmit)='createSubmit()'>
     <label>
