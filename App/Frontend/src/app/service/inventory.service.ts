@@ -17,4 +17,10 @@ export class InventoryService {
   getInventory() {
     return this.http.get(`${this.uri}/readAllInventory`).pipe(map(res => res.json()));
   }
+
+  addInventory(newInventory) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createInventory`, newInventory, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

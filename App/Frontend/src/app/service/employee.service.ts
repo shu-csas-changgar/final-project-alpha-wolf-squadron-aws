@@ -16,4 +16,10 @@ export class EmployeeService {
   getEmployee() {
     return this.http.get(`${this.uri}/readAllEmployees`).pipe(map(res => res.json()));
   }
+
+  addEmployee(newEmployee) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createEmployee`, newEmployee, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

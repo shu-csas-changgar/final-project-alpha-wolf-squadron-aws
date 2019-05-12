@@ -17,4 +17,10 @@ export class LeaseService {
   getLease() {
     return this.http.get(`${this.uri}/readAllLeases`).pipe(map(res => res.json()));
   }
+  
+  addLease(newLease) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createLease`, newLease, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

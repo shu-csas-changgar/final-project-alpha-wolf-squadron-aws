@@ -28,7 +28,6 @@ export class CountryPageComponent implements OnInit {
     }
     );
     console.log(jsonFormat);
-
   }
 
   createSubmit(){
