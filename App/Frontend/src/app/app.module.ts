@@ -18,6 +18,7 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CrudPageComponent } from './crud-page/crud-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     RoomPageComponent,
     TypePageComponent,
     VendorPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    CrudPageComponent
   ],
   imports: [
     BrowserModule,
