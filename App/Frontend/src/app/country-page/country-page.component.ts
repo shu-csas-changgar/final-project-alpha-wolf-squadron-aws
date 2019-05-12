@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
-  countrys: Country[] = []
+  countries: Country[] = []
   countryForm = new FormGroup({
     country : new FormControl('')
   })
@@ -22,11 +22,8 @@ export class CountryPageComponent implements OnInit {
   }
 
   addCountry() {
-    const newCountry = {
-      country: this.name
-    }
 
-    this.countryService.addCountry(newCountry).subscribe(country => {
+    this.countryService.addCountry(this.countryForm.value).subscribe(country => {
       this.countries.push(country);
     });
   }
