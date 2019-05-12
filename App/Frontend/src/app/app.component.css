@@ -27,3 +27,20 @@ table th{
 table thead{
     background: linear-gradient(330deg, #41c007 0%, #27aa1b 25%, #1d8622 50%, #143f03 75%, #050505 100%);
 }
+
+.Home-Page{
+    height:43em; background-size: auto; width: 101%;
+    background-image:url('./../assets/JharensonTheEquador.jpg');
+    background-position:50% 50%;
+    /* margin-top: -106.5px;
+    margin-left: -10px; */
+    overflow: hidden;
+
+    /*transform: scale(1.07);*/
+  }
+
+h4{
+    text-align: center;
+    font-size: 500%
+}
+
