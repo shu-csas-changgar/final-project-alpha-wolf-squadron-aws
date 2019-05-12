@@ -24,6 +24,7 @@ import { ViewServiceService } from './service/view-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ReactiveFormsModule} from '@angular/forms'
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [ViewServiceService],
