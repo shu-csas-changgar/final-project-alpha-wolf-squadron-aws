@@ -11,9 +11,14 @@ city.post('/createCity', (req, res)=>{
         "fk_country_id": req.body.fk_country_id
     };
     let query = db.query(sql, newCity, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -21,9 +26,14 @@ city.post('/createCity', (req, res)=>{
 city.get('/readAllcities', (req, res)=>{
             let sql = 'SELECT * From city'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -31,9 +41,14 @@ city.get('/readAllcities', (req, res)=>{
 city.get('/readcity/:id', (req, res)=>{
     let sql = 'SELECT * From city where city_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -45,9 +60,14 @@ city.put('/updatecity/:id', (req, res)=>{
     };
     let sql = 'UPDATE city Set ? WHERE city_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newCity, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -56,9 +76,10 @@ city.put('/updatecity/:id', (req, res)=>{
 city.delete('/deleteCity/:id', (req, res) => {
     let sql = 'DELETE FROM city WHERE city_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

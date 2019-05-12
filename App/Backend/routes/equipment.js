@@ -15,9 +15,14 @@ equipment.post('/createEquipment', (req, res)=>{
         "fk_type_id": req.body.fk_type_id
     };
     let query = db.query(sql, newEquipment, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -25,9 +30,14 @@ equipment.post('/createEquipment', (req, res)=>{
 equipment.get('/readAllEquipment', (req, res)=>{
             let sql = 'SELECT * From equipment'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -35,9 +45,14 @@ equipment.get('/readAllEquipment', (req, res)=>{
 equipment.get('/readEquipment/:id', (req, res)=>{
     let sql = 'SELECT * From equipment where equipment_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -53,9 +68,14 @@ equipment.put('/updateEquipment/:id', (req, res)=>{
     };
     let sql = 'UPDATE equipment Set ? WHERE equipment_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newEquipment, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be udpated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -64,9 +84,10 @@ equipment.put('/updateEquipment/:id', (req, res)=>{
 equipment.delete('/deleteEquipment/:id', (req, res) => {
     let sql = 'DELETE FROM equipment WHERE equipment_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

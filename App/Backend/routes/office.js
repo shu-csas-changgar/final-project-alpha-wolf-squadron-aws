@@ -13,9 +13,14 @@ office.post('/createOffice', (req, res)=>{
         "fk_address_id": req.body.fk_address_id
     };
     let query = db.query(sql, newOffice, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -23,9 +28,14 @@ office.post('/createOffice', (req, res)=>{
 office.get('/readAllOffices', (req, res)=>{
             let sql = 'SELECT * From office'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -33,9 +43,14 @@ office.get('/readAllOffices', (req, res)=>{
 office.get('/readOffice/:id', (req, res)=>{
     let sql = 'SELECT * From office where office_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -49,9 +64,14 @@ office.put('/updateOffice/:id', (req, res)=>{
     };
     let sql = 'UPDATE office Set ? WHERE office_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newOffice, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -60,9 +80,10 @@ office.put('/updateOffice/:id', (req, res)=>{
 office.delete('/deleteOffice/:id', (req, res) => {
     let sql = 'DELETE FROM office WHERE office_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 
