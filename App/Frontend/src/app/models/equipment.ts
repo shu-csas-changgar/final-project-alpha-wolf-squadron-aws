@@ -15,7 +15,7 @@ export class Equipment {
         this.active = active;
         this.warranty_end_date = w_e_date;
         this.fk_lease_id = fk_l_id;
-        this.fk_type_id
+        this.fk_type_id = fk_t_id;
         this.fk_vendor_id = fk_v_id;
         this.date_created = created;
         this.last_update = last;
