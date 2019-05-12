@@ -13,7 +13,19 @@
   <tr tableCol *ngFor="let address of addresses">
     <td>{{address.address_id}}</td>
     <td>{{address.address1}}</td>
-    <td>{{address.address2}}</td>
+    <td> <ng-template
+      *ngIf="address.address2 != null;then show; else notShow">
+    </ng-template>
+    <ng-template #show>
+      <p>
+          {{address.address2}}
+     </p>
+    </ng-template>
+    <ng-template #notShow>
+      <p>
+          N/A
+      </p>
+    </ng-template></td>
     <td>{{address.district}}</td>
     <td>{{address.postal_code}}</td>
     <td>{{address.fk_city_id}}</td>
