@@ -334,4 +334,7 @@ join vendor as v
 		on v.vendor_id = e.fk_vendor_id
 join inventory as i
 		on i.fk_equipment_id = e.equipment_id;
+        
+INSERT INTO address (address, address2, district, postal_code, fk_city_id) VALUES('test', null, 'test', 'test', 3);
+select * from address;
 	
