@@ -13,7 +13,7 @@
   <tr tableCol *ngFor="let view of views">
     
     <ng-template
-      *ngIf="view.equipment_id;then use; else empty">
+      *ngIf="!view.equipment_id;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.equipment_id}}</td>
@@ -22,7 +22,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.name;then use; else empty">
+      *ngIf="!view.name;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.name}}</td>
@@ -31,7 +31,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.type;then use; else empty">
+      *ngIf="!view.type;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.type}}</td>
@@ -40,7 +40,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.active;then use; else empty">
+      *ngIf="!view.active;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.active}}</td>
@@ -49,7 +49,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.fk_lease_id;then use; else empty">
+      *ngIf="!view.fk_lease_id;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.fk_lease_id}}</td>
@@ -58,7 +58,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.vendor;then use; else empty">
+      *ngIf="!view.vendor;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.vendor}}</td>
@@ -67,7 +67,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.fk_employee_id;then use; else empty">
+      *ngIf="!view.fk_employee_id;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.fk_employee_id}}</td>
@@ -76,7 +76,7 @@
         <td>"N/A"</td>
     </ng-template>
     <ng-template
-      *ngIf="view.fk_room_id;then use; else empty">
+      *ngIf="!view.fk_room_id;then empty; else use">
     </ng-template>    
     <ng-template #showuse>
         <td>{{view.fk_room_id}}</td>
