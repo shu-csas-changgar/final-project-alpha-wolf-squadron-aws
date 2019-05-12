@@ -11,11 +11,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class InventoryPageComponent implements OnInit {
 
-  Inventories: Inventory[] = []
+  inventories: Inventory[] = []
   inventoryForm = new FormGroup({
-    equipment_id: new FormControl,
-    employee_id: new FormControl,
-    room_id: new FormControl
+    fk_equipment_id: new FormControl,
+    fk_employee_id: new FormControl,
+    fk_room_id: new FormControl
   })
   constructor(private InventoryService: InventoryService) { }
 
@@ -27,7 +27,7 @@ export class InventoryPageComponent implements OnInit {
     this.InventoryService
     .getInventory()
     .subscribe((data: Inventory[]) => {
-      this.Inventories = data;
+      this.inventories = data;
     });
   }
 

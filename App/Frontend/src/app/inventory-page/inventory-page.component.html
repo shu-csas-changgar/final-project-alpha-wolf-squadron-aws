@@ -10,7 +10,7 @@
     </thead>
     <tr tableCol *ngFor="let inventory of inventories">
         <td>{{inventory.inventory_id}}</td>
-        <td>{{inventory.fk.equipment_id}}</td>
+        <td>{{inventory.fk_equipment_id}}</td>
         <td>
           <ng-template *ngIf="inventory.fk_employee_id != null;then show; else notShow">
           </ng-template>
