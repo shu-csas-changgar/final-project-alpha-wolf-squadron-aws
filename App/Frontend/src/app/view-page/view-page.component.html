@@ -22,8 +22,20 @@
     <td>{{view.fk_lease_id}}</td>
     <td>{{view.vendor}}</td>
     <td>
-      {{view.fk_employee_id}}
-      <span ng-if="!view.fk_employee_id">null</span>
+      <ng-template
+        *ngIf="view.fk_employee_id != null;then show; else notShow">
+      </ng-template>
+      <ng-template #show>
+        <p>
+           {{view.fk_employee_id}}
+       </p>
+      </ng-template>
+      <ng-template #notShow>
+        <p>
+            N/A
+        </p>
+      </ng-template>
+  </td>
     </td>
     <td>
       <ng-template
