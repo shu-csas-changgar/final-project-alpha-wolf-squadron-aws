@@ -6,7 +6,19 @@
       <th>End Date</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let lease of leases">
+        <td>{{lease.lease_id}}</td>
+        <td>{{lease.start_date}}</td>
+        <td>{{lease.end_date}}</td>
+        <td>{{lease.date_created}}</td>
+        <td>{{lease.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='leaseForm' (ngSubmit)='createSubmit()'>
     <label>

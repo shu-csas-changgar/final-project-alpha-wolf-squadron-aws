@@ -10,7 +10,49 @@
       <th>Type ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let equipment of equipments">
+        <td>{{equipment.equipment_id}}</td>
+        <td>{{equipment.name}}</td>
+        <td>{{equipment.active}}</td>
+        <td>
+          <ng-template *ngIf="equipment.warranty_end_date != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{equipment.warranty_end_date}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
+        <td>
+          <ng-template *ngIf="equipment.fk_lease_id != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{equipment.fk_lease_id}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
+        <td>{{equipment.fk_vendor_id}}</td>
+        <td>{{equipment.fk_type_id}}</td>
+        <td>{{equipment.date_created}}</td>
+        <td>{{equipment.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='equipmentForm' (ngSubmit)='createSubmit()'>
     <label>

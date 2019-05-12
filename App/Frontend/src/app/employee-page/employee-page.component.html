@@ -8,11 +8,31 @@
       <th>Work Phone Number</th>
       <th>Email</th>
       <th>UserName</th>
+      <th>Active</th>
       <th>Address ID</th>
       <th>Room ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let employee of employees">
+        <td>{{employee.employee_id}}</td>
+        <td>{{employee.first_name}}</td>
+        <td>{{employee.last_name}}</td>
+        <td>{{employee.phone_number}}</td>
+        <td>{{employee.work_phone_number}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.username}}</td>
+        <td>{{employee.active}}</td>
+        <td>{{employee.fk_address_id}}</td>
+        <td>{{employee.fk_room_id}}</td>
+        <td>{{employee.date_created}}</td>
+        <td>{{employee.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='employeeForm' (ngSubmit)='createSubmit()'>
     <label>
