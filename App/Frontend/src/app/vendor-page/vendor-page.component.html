@@ -12,16 +12,16 @@
   </table>
   <form [formGroup]='vendorForm' (ngSubmit)='createSubmit()'>
     <label>
-      Vendor Name:<input type="text" formControlName="name">
+      Vendor Name:<br><input type="text" formControlName="name"><br>
     </label>
     <label>
-      Phone Number:<input type="text" formControlName="phone_number">
+      Phone Number:<br><input type="text" formControlName="phone_number"><br>
     </label>
     <label>
-      Contact Email:<input type="text" formControlName="contact_email">
+      Contact Email:<br><input type="text" formControlName="contact_email"><br>
     </label>
     <label>
-      Address ID:<input type="text" formControlName="address_id">
+      Address ID:<br><input type="text" formControlName="address_id"><br>
     </label>
     <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
   </form>
