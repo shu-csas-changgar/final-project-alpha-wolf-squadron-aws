@@ -8,3 +8,12 @@
     <th>Last Updated</th>
   </thead>
 </table>
+<form [formGroup]='cityForm' (ngSubmit)='onSubmit()'>
+  <label>
+    City Name:<input type="text" formControlName="city">
+  </label>
+  <label>
+    Country ID:<input type="text" formControlName="country_id">
+  </label>
+  <button type="submit" [disabled] ="!cityForm.valid">ADD</button>
+</form>

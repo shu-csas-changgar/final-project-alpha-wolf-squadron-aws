@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../service/city.service';
 import { City } from '../models/city';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-city-page',
@@ -11,6 +12,11 @@ import { City } from '../models/city';
 export class CityPageComponent implements OnInit {
 
   cities: City[] = []
+  cityForm = new FormGroup({
+    city: new FormControl(''),
+    country_id: new FormControl('')
+  })
+
   constructor(private cityService: CityService) { }
 
   ngOnInit() {
@@ -24,5 +30,8 @@ export class CityPageComponent implements OnInit {
       this.cities = data;
     });
   }
-
+  
+  onSubmit(){
+    console.log(this.cityForm.value)
+  }
 }
