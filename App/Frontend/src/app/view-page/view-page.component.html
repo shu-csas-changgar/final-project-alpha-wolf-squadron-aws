@@ -11,80 +11,14 @@
     <th class="th-room-id">Room ID</th>
   </thead>
   <tr tableCol *ngFor="let view of views">
-    
-    <ng-template
-      *ngIf="!view.equipment_id;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.equipment_id}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.name;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.name}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.type;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.type}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.active;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.active}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.fk_lease_id;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.fk_lease_id}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.vendor;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.vendor}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.fk_employee_id;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.fk_employee_id}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    <ng-template
-      *ngIf="!view.fk_room_id;then empty; else use">
-    </ng-template>    
-    <ng-template #showuse>
         <td>{{view.fk_room_id}}</td>
-    </ng-template>    
-    <ng-template #empty>
-        <td>"N/A"</td>
-    </ng-template>
-    </tr>
 </table>
 
 
