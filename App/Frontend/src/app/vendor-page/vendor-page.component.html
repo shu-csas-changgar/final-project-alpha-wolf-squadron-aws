@@ -8,20 +8,34 @@
       <th>Address ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let vendor of venodrs">
+        <td>{{vendor.vendor_id}}</td>
+        <td>{{vendor.name}}</td>
+        <td>{{vendor.phone}}</td>
+        <td>{{vendor.email}}</td>
+        <td>{{vendor.fk_address_id}}</td>
+        <td>{{vendor.date_created}}</td>
+        <td>{{vendor.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='vendorForm' (ngSubmit)='createSubmit()'>
     <label>
-      Vendor Name:<input type="text" formControlName="name">
+      Vendor Name:<br><input type="text" formControlName="name"><br>
     </label>
     <label>
-      Phone Number:<input type="text" formControlName="phone_number">
+      Phone Number:<br><input type="text" formControlName="phone_number"><br>
     </label>
     <label>
-      Contact Email:<input type="text" formControlName="contact_email">
+      Contact Email:<br><input type="text" formControlName="contact_email"><br>
     </label>
     <label>
-      Address ID:<input type="text" formControlName="address_id">
+      Address ID:<br><input type="text" formControlName="address_id"><br>
     </label>
     <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
   </form>

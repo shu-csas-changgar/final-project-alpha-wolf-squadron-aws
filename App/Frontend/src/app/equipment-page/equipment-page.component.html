@@ -10,6 +10,7 @@
       <th>Type ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
     <tr tableCol *ngFor="let equipment of equipments">
         <td>{{equipment.equipment_id}}</td>
@@ -47,6 +48,10 @@
         <td>{{equipment.fk_type_id}}</td>
         <td>{{equipment.date_created}}</td>
         <td>{{equipment.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
       </tr>
   </table>
   <form [formGroup]='equipmentForm' (ngSubmit)='createSubmit()'>

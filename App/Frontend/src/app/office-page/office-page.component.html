@@ -8,6 +8,7 @@
       <th>Address ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
     <tr tableCol *ngFor="let office of offices">
         <td>{{office.office_id}}</td>
@@ -17,20 +18,24 @@
         <td>{{office.fk_address_id}}</td>
         <td>{{office.date_created}}</td>
         <td>{{office.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
       </tr>
   </table>
   <form [formGroup]='officeForm' (ngSubmit)='createSubmit()'>
     <label>
-      Office Name:<input type="text" formControlName="name">
+      Office Name:<br><input type="text" formControlName="name"><br>
     </label>
     <label>
-      Office Phone Number:<input type="text" formControlName="phone_number">
+      Office Phone Number:<br><input type="text" formControlName="phone_number"><br>
     </label>
     <label>
-      Equipment_Contact:<input type="text" formControlName="equipment_contact">
+      Equipment_Contact:<br><input type="text" formControlName="equipment_contact"><br>
     </label>
     <label>
-      Address ID:<input type="text" formControlName="addres_id">
+      Address ID:<br><input type="text" formControlName="addres_id"><br>
     </label>
     <button type="submit" [disabled] ="!officeForm.valid">ADD</button>
   </form>

@@ -19,6 +19,6 @@
   </tr>
 </table>
 <form [formGroup]= 'countryForm' (ngSubmit)='addCountry()'>
-  <label>Country Name: <input type ="text" formControlName ='country'></label>
+  <label>Country Name: <br><input type ="text" formControlName ='country'></label><br>
   <button type="submit" [disabled] ="!countryForm.valid">ADD</button>
 </form>

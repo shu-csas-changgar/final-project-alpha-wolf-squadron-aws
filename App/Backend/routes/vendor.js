@@ -13,9 +13,14 @@ vendor.post('/createVendor', (req, res)=>{
         "fk_address_id": req.body.fk_address_id
     };
     let query = db.query(sql, newVendor, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -23,9 +28,14 @@ vendor.post('/createVendor', (req, res)=>{
 vendor.get('/readAllVendors', (req, res)=>{
             let sql = 'SELECT * From vendor'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry not could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -33,9 +43,14 @@ vendor.get('/readAllVendors', (req, res)=>{
 vendor.get('/readVendor/:id', (req, res)=>{
     let sql = 'SELECT * From vendor where vendor_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -49,9 +64,14 @@ vendor.put('/updateVendor/:id', (req, res)=>{
     };
     let sql = 'UPDATE vendor Set ? WHERE vendor_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newVendor, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be udpated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -60,9 +80,10 @@ vendor.put('/updateVendor/:id', (req, res)=>{
 vendor.delete('/deleteVendor/:id', (req, res) => {
     let sql = 'DELETE FROM vendor WHERE vendor_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

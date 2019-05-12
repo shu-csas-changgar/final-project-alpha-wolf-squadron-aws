@@ -49,19 +49,19 @@
 </table>
 <form [formGroup]='addressForm' (ngSubmit)='onSubmit()'>
   <label>
-    Address 1:<input type="text" formControlName="address1">
+    Address 1:<br><input type="text" formControlName="address1"><br>
   </label>
   <label>
-    Address 2:<input type="text" formControlName="address2">
+    Address 2:<br><input type="text" formControlName="address2"><br>
   </label>
   <label>
-    District:<input type="text" formControlName="district">
+    District:<br><input type="text" formControlName="district"><br>
   </label>
   <label>
-    Postal Code:<input type="text" formControlName="postal_code">
+    Postal Code:<br><input type="text" formControlName="postal_code"><br>
   </label>
   <label>
-      City ID:<input type = "text" formControlName ="city_id">
+      City ID:<br><input type = "text" formControlName ="city_id"><br>
   </label>
   <button type="submit" [disabled] ="!addressForm.valid">ADD</button>
 </form>

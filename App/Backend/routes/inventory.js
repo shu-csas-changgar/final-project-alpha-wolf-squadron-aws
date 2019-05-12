@@ -12,9 +12,14 @@ inventory.post('/createInventory', (req, res)=>{
         "fk_room_id": req.body.fk_room_id
     };
     let query = db.query(sql, newInventory, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -22,9 +27,14 @@ inventory.post('/createInventory', (req, res)=>{
 inventory.get('/readAllInventory', (req, res)=>{
             let sql = 'SELECT * From inventory'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -32,9 +42,14 @@ inventory.get('/readAllInventory', (req, res)=>{
 inventory.get('/readInventory/:id', (req, res)=>{
     let sql = 'SELECT * From inventory where inventory_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -47,9 +62,14 @@ inventory.put('/updateInventory/:id', (req, res)=>{
     };
     let sql = 'UPDATE inventory Set ? WHERE inventory_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newInventory, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -58,9 +78,10 @@ inventory.put('/updateInventory/:id', (req, res)=>{
 inventory.delete('/deleteInventory/:id', (req, res) => {
     let sql = 'DELETE FROM inventory WHERE inventory_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

@@ -11,10 +11,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
-  countries: Country[] = []
+  countries: Country[] = [];
   countryForm = new FormGroup({
     country : new FormControl('')
-  })
+  });
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
@@ -22,12 +22,14 @@ export class CountryPageComponent implements OnInit {
   }
 
   addCountry() {
-    var jsonFormat = JSON.stringify(this.countryForm.getRawValue());
-    this.countryService.addCountry(jsonFormat).subscribe(country => {
-      this.countries.push(country);
+    var newCountry = {
+      "country":this.countryForm.value.country
     }
-    );
-    console.log(jsonFormat);
+    console.log(newCountry);
+    this.countryService.addCountry(newCountry).subscribe(country => {
+      this.countries.push(country);
+    });
+    this.countryService.getCountry().subscribe(countries => this.countries = countries);
 
   }
 

@@ -10,9 +10,14 @@ type.post('/createType', (req, res)=>{
         "type": req.body.type
     };
     let query = db.query(sql, newType, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -20,9 +25,14 @@ type.post('/createType', (req, res)=>{
 type.get('/readAllTypes', (req, res)=>{
             let sql = 'SELECT * From type'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -30,9 +40,14 @@ type.get('/readAllTypes', (req, res)=>{
 type.get('/readType/:id', (req, res)=>{
     let sql = 'SELECT * From type where type_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -43,9 +58,14 @@ type.put('/updateType/:id', (req, res)=>{
     };
     let sql = 'UPDATE type Set ? WHERE type_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newType, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -54,9 +74,10 @@ type.put('/updateType/:id', (req, res)=>{
 type.delete('/deleteType/:id', (req, res) => {
     let sql = 'DELETE FROM type WHERE type_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 
