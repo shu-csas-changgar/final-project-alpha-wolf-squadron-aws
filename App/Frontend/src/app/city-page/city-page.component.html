@@ -6,6 +6,7 @@
     <th>Country ID</th>
     <th>Date Created</th>
     <th>Last Updated</th>
+    <th>Update/Delete</th>
   </thead>
   <tr tableCol *ngFor="let city of cities">
     <td>{{city.city_id}}</td>
@@ -13,6 +14,10 @@
     <td>{{city.fk_country_id}}</td>
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
+    <td class='update-delete-btn'>
+      <button type ="button" (click)='updateSubmit(city)'>update</button>
+      <button type="button" (click)='deleteSubmit(city)'>delete</button>
+    </td>
   </tr>
 </table>
 <form [formGroup]='cityForm' (ngSubmit)='onSubmit()'>
