@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../service/country.service';
 import { Country } from '../models/country';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-country-page',
@@ -11,6 +12,9 @@ import { Country } from '../models/country';
 export class CountryPageComponent implements OnInit {
 
   countrys: Country[] = []
+  countryForm = new FormGroup({
+    country : new FormControl('')
+  })
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
@@ -23,5 +27,9 @@ export class CountryPageComponent implements OnInit {
     .subscribe((data: Country[]) => {
       this.countrys = data;
     });
+  }
+
+  createSubmit(){
+    console.log(this.countryForm.value)
   }
 }

@@ -12,3 +12,27 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='equipmentForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Equipment Name:<input type="text" formControlName="name">
+    </label>
+    <label>
+      Active?:<input type="text" formControlName="active?">
+    </label>
+    <label>
+      Warranty End Date:<input type="text" formControlName="warranty_end_date">
+    </label>
+    <label>
+      Lease ID:<input type="text" formControlName="lease_id">
+    </label>
+    <label>
+      Vendor ID:<input type="text" formControlName="vendor_id">
+    </label>
+    <label>
+      Type ID:<input type="text" formControlName="type_id">
+    </label>
+    <label>
+      Address ID:<input type="text" formControlName="address_id">
+    </label>
+    <button type="submit" [disabled] ="!equipmentForm.valid">ADD</button>
+  </form>

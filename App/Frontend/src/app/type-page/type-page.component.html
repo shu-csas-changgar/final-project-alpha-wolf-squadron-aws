@@ -7,3 +7,9 @@
       <th>Last Updated</th>
     </thead>
   </table>
+<form [formGroup]='typeForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Type Name:<input type="text" formControlName="name">
+    </label>
+    <button type="submit" [disabled] ="!typeForm.valid">ADD</button>
+  </form>

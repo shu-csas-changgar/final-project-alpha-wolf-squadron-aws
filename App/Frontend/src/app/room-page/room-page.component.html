@@ -9,3 +9,15 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='roomForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Room Name:<input type="text" formControlName="name">
+    </label>
+    <label>
+      Floor Number:<input type="text" formControlName="floor">
+    </label>
+    <label>
+      Office ID:<input type="text" formControlName="office_id">
+    </label>
+    <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
+  </form>

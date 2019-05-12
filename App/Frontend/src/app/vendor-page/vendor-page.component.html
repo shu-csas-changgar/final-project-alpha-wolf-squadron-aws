@@ -10,3 +10,18 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='vendorForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Vendor Name:<input type="text" formControlName="name">
+    </label>
+    <label>
+      Phone Number:<input type="text" formControlName="phone_number">
+    </label>
+    <label>
+      Contact Email:<input type="text" formControlName="contact_email">
+    </label>
+    <label>
+      Address ID:<input type="text" formControlName="address_id">
+    </label>
+    <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
+  </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaseService } from '../service/lease.service';
 import { Lease } from '../models/lease';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lease-page',
@@ -10,7 +11,11 @@ import { Lease } from '../models/lease';
 })
 export class LeasePageComponent implements OnInit {
 
-  Leasees: Lease[] = []
+  Leases: Lease[] = []
+  leaseForm = new FormGroup({
+    star_date: new FormControl,
+    end_date : new FormControl
+  })
   constructor(private LeaseService: LeaseService) { }
 
   ngOnInit() {
@@ -21,8 +26,11 @@ export class LeasePageComponent implements OnInit {
     this.LeaseService
     .getLease()
     .subscribe((data: Lease[]) => {
-      this.Leasees = data;
+      this.Leases = data;
     });
   }
-
+  
+  createSubmit(){
+    console.log(this.leaseForm.value)
+  }
 }

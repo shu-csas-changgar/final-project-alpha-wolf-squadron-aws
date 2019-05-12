@@ -8,3 +8,12 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='leaseForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Lease Start Date:<input type="text" formControlName="start_date">
+    </label>
+    <label>
+      Lease End Date:<input type="text" formControlName="end_date">
+    </label>
+    <button type="submit" [disabled] ="!leaseForm.valid">ADD</button>
+  </form>

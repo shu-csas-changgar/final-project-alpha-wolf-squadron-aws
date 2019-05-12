@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../service/Vendor.service';
 import { Vendor } from '../models/Vendor';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-vendor-page',
@@ -10,7 +11,13 @@ import { Vendor } from '../models/Vendor';
 })
 export class VendorPageComponent implements OnInit {
 
-  Vendores: Vendor[] = []
+  Vendors: Vendor[] = []
+  vendorForm = new FormGroup({
+    name: new FormControl,
+    phone_number: new FormControl,
+    contact_email: new FormControl,
+    address_id: new FormControl
+  })
   constructor(private VendorService: VendorService) { }
 
   ngOnInit() {
@@ -21,8 +28,11 @@ export class VendorPageComponent implements OnInit {
     this.VendorService
     .getVendor()
     .subscribe((data: Vendor[]) => {
-      this.Vendores = data;
+      this.Vendors = data;
     });
   }
 
+  createSubmit(){
+    console.log(this.vendorForm.value)
+  }
 }

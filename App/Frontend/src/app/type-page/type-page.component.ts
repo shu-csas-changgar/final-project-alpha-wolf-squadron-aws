@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TypeService } from '../service/Type.service';
 import { Type } from '../models/Type';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-type-page',
@@ -10,7 +11,10 @@ import { Type } from '../models/Type';
 })
 export class TypePageComponent implements OnInit {
 
-  Typees: Type[] = []
+  Types: Type[] = []
+  typeForm = new FormGroup({
+    name: new FormControl
+  })
   constructor(private TypeService: TypeService) { }
 
   ngOnInit() {
@@ -21,8 +25,11 @@ export class TypePageComponent implements OnInit {
     this.TypeService
     .getType()
     .subscribe((data: Type[]) => {
-      this.Typees = data;
+      this.Types = data;
     });
   }
 
+  createSubmit(){
+    console.log(this.typeForm.value)
+  }
 }

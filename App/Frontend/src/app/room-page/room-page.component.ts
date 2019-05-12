@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../service/room.service';
 import { Room } from '../models/room';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-room-page',
@@ -10,7 +11,12 @@ import { Room } from '../models/room';
 })
 export class RoomPageComponent implements OnInit {
 
-  Roomes: Room[] = []
+  Rooms: Room[] = []
+  roomForm = new FormGroup({
+    name: new FormControl,
+    floor: new FormControl,
+    office_id: new FormControl
+  })
   constructor(private RoomService: RoomService) { }
 
   ngOnInit() {
@@ -21,8 +27,12 @@ export class RoomPageComponent implements OnInit {
     this.RoomService
     .getRoom()
     .subscribe((data: Room[]) => {
-      this.Roomes = data;
+      this.Rooms = data;
     });
+  }
+
+  createSubmit(){
+    console.log(this.roomForm.value)
   }
 
 }

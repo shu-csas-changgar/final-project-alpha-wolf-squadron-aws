@@ -14,3 +14,30 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='employeeForm' (ngSubmit)='createSubmit()'>
+    <label>
+      First Name:<input type="text" formControlName="firts_name">
+    </label>
+    <label>
+      Last Name:<input type="text" formControlName="last_name">
+    </label>
+    <label>
+      Phone Number:<input type="text" formControlName="phone_number">
+    </label>
+    <label>
+      Work Phone Number:<input type="text" formControlName="work_number">
+    </label>
+    <label>
+      Email:<input type="text" formControlName="email">
+    </label>
+    <label>
+      Username:<input type="text" formControlName="username">
+    </label>
+    <label>
+      Address ID:<input type="text" formControlName="address_id">
+    </label>
+    <label>
+      Room ID:<input type="text" formControlName="room_id">
+    </label>
+    <button type="submit" [disabled] ="!employeeForm.valid">ADD</button>
+  </form>

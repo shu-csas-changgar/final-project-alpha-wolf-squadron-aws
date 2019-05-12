@@ -9,3 +9,15 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='inventoryForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Equipment ID:<input type="text" formControlName="equipment_id">
+    </label>
+    <label>
+      Employee ID:<input type="text" formControlName="employee_id">
+    </label>
+    <label>
+      Room ID:<input type="text" formControlName="room_id">
+    </label>
+    <button type="submit" [disabled] ="!inventoryForm.valid">ADD</button>
+  </form>

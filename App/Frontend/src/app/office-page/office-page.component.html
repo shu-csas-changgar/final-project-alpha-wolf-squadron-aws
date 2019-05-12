@@ -10,3 +10,18 @@
       <th>Last Updated</th>
     </thead>
   </table>
+  <form [formGroup]='officeForm' (ngSubmit)='createSubmit()'>
+    <label>
+      Office Name:<input type="text" formControlName="name">
+    </label>
+    <label>
+      Office Phone Number:<input type="text" formControlName="phone_number">
+    </label>
+    <label>
+      Equipment_Contact:<input type="text" formControlName="equipment_contact">
+    </label>
+    <label>
+      Address ID:<input type="text" formControlName="addres_id">
+    </label>
+    <button type="submit" [disabled] ="!officeForm.valid">ADD</button>
+  </form>

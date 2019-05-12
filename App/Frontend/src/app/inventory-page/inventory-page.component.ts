@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../service/inventory.service';
 import { Inventory } from '../models/inventory';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-inventory-page',
@@ -10,7 +11,12 @@ import { Inventory } from '../models/inventory';
 })
 export class InventoryPageComponent implements OnInit {
 
-  Inventoryes: Inventory[] = []
+  Inventories: Inventory[] = []
+  inventoryForm = new FormGroup({
+    equipment_id: new FormControl,
+    employee_id: new FormControl,
+    room_id: new FormControl
+  })
   constructor(private InventoryService: InventoryService) { }
 
   ngOnInit() {
@@ -21,8 +27,12 @@ export class InventoryPageComponent implements OnInit {
     this.InventoryService
     .getInventory()
     .subscribe((data: Inventory[]) => {
-      this.Inventoryes = data;
+      this.Inventories = data;
     });
+  }
+
+  createSubmit(){
+    console.log(this.inventoryForm.value)
   }
 
 }
