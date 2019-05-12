@@ -32,11 +32,7 @@ table thead{
     height:43em; background-size: auto; width: 101%;
     background-image:url('./../assets/JharensonTheEquador.jpg');
     background-position:50% 50%;
-    /* margin-top: -106.5px;
-    margin-left: -10px; */
     overflow: hidden;
-
-    /*transform: scale(1.07);*/
   }
 
 h4{
