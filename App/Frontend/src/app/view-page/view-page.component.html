@@ -29,6 +29,19 @@
       <span *ngif="view.fk_room_id != null;then show; else notShow"></span>
       <span #show>{{view.fk_room_id}}</span>
       <span #notShow>N/A</span>
+      <ng-template
+        *ngIf="view.fk_room_id != null;then show; else notShow">
+      </ng-template>
+      <ng-template #show>
+        <p>
+            {{view.fk_room_id}}
+        </p>
+      </ng-template>
+      <ng-template #notShow>
+        <p>
+            N/A
+        </p>
+      </ng-template>
     </td>
 </table>
 
