@@ -26,4 +26,19 @@ export class ViewPageComponent implements OnInit {
       this.views = data;
     });
   }
+
+  /*getRideOfNull(){
+    for(var i = 0; i < this.views.length; i++) { 
+      if(this.views[i].equipment_id === null){this.views[i].equipment_id = "N/A";}
+        
+    equipment_id: number;
+    name: String;
+    type: String;
+    active: number;
+    fk_lease_id: number;
+    vendor: String;
+    fk_employee_id: number;
+    fk_room_id: number;
+   }
+  }*/
 }

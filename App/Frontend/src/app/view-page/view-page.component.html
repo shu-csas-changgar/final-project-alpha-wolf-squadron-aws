@@ -11,14 +11,24 @@
     <th class="th-room-id">Room ID</th>
   </thead>
   <tr tableCol *ngFor="let view of views">
-        <td>{{view.equipment_id}}</td>
-        <td>{{view.name}}</td>
-        <td>{{view.type}}</td>
-        <td>{{view.active}}</td>
-        <td>{{view.fk_lease_id}}</td>
-        <td>{{view.vendor}}</td>
-        <td>{{view.fk_employee_id}}</td>
-        <td>{{view.fk_room_id}}</td>
+    <td>
+      {{view.equipment_id}}
+    </td>
+    <td>
+      {{view.name}}
+    </td>
+    <td>{{view.type}}</td>
+    <td>{{view.active}}</td>
+    <td>{{view.fk_lease_id}}</td>
+    <td>{{view.vendor}}</td>
+    <td>
+      {{view.fk_employee_id}}
+      <span ng-if="!view.fk_employee_id">null</span>
+    </td>
+    <td>
+      {{view.fk_room_id}}
+      <span ng-if="!view.fk_employee_id">null</span>
+    </td>
 </table>
 
 
