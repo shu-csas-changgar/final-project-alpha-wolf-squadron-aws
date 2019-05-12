@@ -10,6 +10,8 @@ var app = express();
 const employeeRoute = require('./routes/employee');
 const viewRoute = require('./routes/view');
 const addressRoute = require('./routes/address');
+const countryRoute = require('./routes/country');
+const cityRoute = require('./routes/city')
 
 const port = 3000;
 
@@ -28,6 +30,8 @@ app.use(bodyparser.json());
 app.use('/api', employeeRoute);
 app.use('/api', viewRoute);
 app.use('/api', addressRoute);
+app.use('/api', countryRoute);
+app.use('/api', cityRoute);
 
 //testing server
 app.get('/', (req, res)=> {
