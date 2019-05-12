@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewServiceService } from '../service/view-service.service';
 import { View } from '../models/view';
+import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
@@ -10,6 +12,7 @@ import { View } from '../models/view';
 export class ViewPageComponent implements OnInit {
 
   views: View[] = []
+  
   constructor(private viewService: ViewServiceService) { }
 
   ngOnInit() {
@@ -23,5 +26,4 @@ export class ViewPageComponent implements OnInit {
       this.views = data;
     });
   }
-
 }

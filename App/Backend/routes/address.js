@@ -4,7 +4,7 @@ const address = express.Router();
 const db = require('../db');
 
 //Insert Address
-address.post('/addAddress', (req, res)=>{
+address.post('/createAddress', (req, res)=>{
     let sql = 'INSERT INTO address SET ?';
     let newAddress = {
         "address": req.body.address,

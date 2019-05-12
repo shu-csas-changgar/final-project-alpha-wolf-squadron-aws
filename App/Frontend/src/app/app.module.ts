@@ -23,6 +23,7 @@ import { EquipmentPageComponent } from './equipment-page/equipment-page.componen
 import { ViewServiceService } from './service/view-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [ViewServiceService],
   bootstrap: [AppComponent]
