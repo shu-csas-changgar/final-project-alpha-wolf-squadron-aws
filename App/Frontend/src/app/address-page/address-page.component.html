@@ -10,6 +10,16 @@
       <th>Date Created</th>
       <th>Last Updated</th>
   </thead>
+  <tr tableCol *ngFor="let address of addresses">
+    <td>{{address.address_id}}</td>
+    <td>{{address.address1}}</td>
+    <td>{{address.address2}}</td>
+    <td>{{address.district}}</td>
+    <td>{{address.postal_code}}</td>
+    <td>{{address.fk_city_id}}</td>
+    <td>{{address.date_created}}</td>
+    <td>{{address.date_update}}</td>
+  </tr>
 </table>
 <form [formGroup]='addressForm' (ngSubmit)='onSubmit()'>
   <label>
