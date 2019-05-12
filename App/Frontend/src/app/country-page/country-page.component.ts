@@ -22,11 +22,12 @@ export class CountryPageComponent implements OnInit {
   }
 
   addCountry() {
-    this.countryService.addCountry(JSON.stringify(this.countryForm.getRawValue())).subscribe(country => {
+    var jsonFormat = JSON.stringify(this.countryForm.getRawValue());
+    this.countryService.addCountry(jsonFormat).subscribe(country => {
       this.countries.push(country);
     }
     );
-    console.log(this.countryForm.value);
+    console.log(jsonFormat);
 
   }
 
@@ -35,6 +36,7 @@ export class CountryPageComponent implements OnInit {
     console.log(this.countryForm.value);
 
   }
+/*
   deleteCountry(id:any) {
     var countries = this.countries;
     this.countryService.deleteCountry(id).subscribe(data => {
@@ -47,6 +49,6 @@ export class CountryPageComponent implements OnInit {
         }
       }
     })
-  }
+  }*/
 
 }
