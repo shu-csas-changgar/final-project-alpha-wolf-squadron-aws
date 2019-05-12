@@ -11,12 +11,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class VendorPageComponent implements OnInit {
 
-  Vendors: Vendor[] = []
+  vendors: Vendor[] = []
   vendorForm = new FormGroup({
     name: new FormControl,
     phone_number: new FormControl,
     contact_email: new FormControl,
-    address_id: new FormControl
+    fk_address_id: new FormControl
   })
   constructor(private VendorService: VendorService) { }
 
@@ -28,7 +28,7 @@ export class VendorPageComponent implements OnInit {
     this.VendorService
     .getVendor()
     .subscribe((data: Vendor[]) => {
-      this.Vendors = data;
+      this.vendors = data;
     });
   }
 

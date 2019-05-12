@@ -18,33 +18,29 @@ export class CountryPageComponent implements OnInit {
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
-    this.countryService.getCountry().subscribe(countries => this.countries = countries);
+    this.fetchCity();
+  }
+
+  fetchCity() {
+    this.countryService
+    .getCountry()
+    .subscribe((data: Country[]) => {
+      this.countries = data;
+    });
   }
 
   addCountry() {
-    var newCountry = {
-      "country":this.countryForm.value.country
-    }
-    console.log(newCountry);
-    this.countryService.addCountry(newCountry).subscribe(country => {
-      this.countries.push(country);
-    });
-    this.countryService.getCountry().subscribe(countries => this.countries = countries);
+    this.countryService.addCountry(this.countryForm.value).subscribe();
+    this.fetchCity();
 
   }
 
 
- /* deleteCountry(id: any) {
-    var countries = this.countries;
-    this.countryService.deleteCountry(id).subscribe(() => {
-      for (var i = 0; i < this.countries.length; i++) {
-        if (countries[i].country_id == id) {
-          countries.splice(i, 1);
-        }
-      }
-    }
-    });
-}*/
+   deleteCountry(country: Country) {
+    this.countryService.deleteCountry(country.country_id).subscribe();
+    this.fetchCity();
 
-  
+  }
+
+
 }

@@ -15,7 +15,7 @@ export class RoomPageComponent implements OnInit {
   roomForm = new FormGroup({
     name: new FormControl,
     floor: new FormControl,
-    office_id: new FormControl
+    fk_office_id: new FormControl
   })
   constructor(private RoomService: RoomService) { }
 
