@@ -7,7 +7,6 @@ const db = require('../db');
 lease.post('/createLease', (req, res)=>{
     let sql = 'INSERT INTO lease SET ?';
     let newLease = {
-        "lease_id": req.body.lease_id, 
         "start_date": req.body.start_date, 
         "end_date": req.body.end_date 
     };
@@ -41,7 +40,6 @@ lease.get('/readLease/:id', (req, res)=>{
 //Update lease based on id
 lease.put('/updateLease/:id', (req, res)=>{
     let newLease = {
-        "lease_id": req.body.lease_id, 
         "start_date": req.body.start_date, 
         "end_date": req.body.end_date 
     };

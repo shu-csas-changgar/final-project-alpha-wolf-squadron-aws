@@ -22,14 +22,18 @@ export class CountryPageComponent implements OnInit {
   }
 
   addCountry() {
-
-    this.countryService.addCountry(this.countryForm.value).subscribe(country => {
+    this.countryService.addCountry(JSON.stringify(this.countryForm.getRawValue())).subscribe(country => {
       this.countries.push(country);
-    });
+    }
+    );
+    console.log(this.countryForm.value);
+
   }
 
+  
   createSubmit(){
-    console.log(this.countryForm.value)
+    console.log(this.countryForm.value);
+
   }
   deleteCountry(id:any) {
     var countries = this.countries;

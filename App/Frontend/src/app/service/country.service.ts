@@ -24,6 +24,6 @@ export class CountryService {
   }
 
   deleteCountry(id){
-    return this.http.delete(`${this.uri}/deleteCountry/` + id).pipe(map(res => res.json()));
+    return this.http.delete(`${this.uri}/deleteCountry/` + id)
   }
 }
