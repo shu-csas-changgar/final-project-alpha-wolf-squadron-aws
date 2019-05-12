@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressService } from '../service/address.service';
 import { Address } from '../models/address';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-address-page',
@@ -11,6 +13,14 @@ import { Address } from '../models/address';
 export class AddressPageComponent implements OnInit {
 
   addresses: Address[] = []
+  addressForm = new FormGroup({
+    address1: new FormControl(''),
+    address2: new FormControl(''),
+    district: new FormControl(''),
+    postal_code: new FormControl(''),
+    city_id: new FormControl('')
+  });
+
   constructor(private addressService: AddressService) { }
 
   ngOnInit() {
@@ -25,4 +35,7 @@ export class AddressPageComponent implements OnInit {
     });
   }
 
+  onSubmit(){
+    console.log(this.addressForm.value)
+  }
 }
