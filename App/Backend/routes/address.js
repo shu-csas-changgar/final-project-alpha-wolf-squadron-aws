@@ -14,9 +14,14 @@ address.post('/createAddress', (req, res)=>{
         "fk_city_id": req.body.fk_city_id
     };
     let query = db.query(sql, newAddress, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -24,9 +29,14 @@ address.post('/createAddress', (req, res)=>{
 address.get('/readAllAddresses', (req, res)=>{
             let sql = 'SELECT * From address'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry not could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -34,9 +44,14 @@ address.get('/readAllAddresses', (req, res)=>{
 address.get('/readAddress/:id', (req, res)=>{
     let sql = 'SELECT * From address where address_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -51,9 +66,14 @@ address.put('/updateAddress/:id', (req, res)=>{
     };
     let sql = 'UPDATE address Set ? WHERE address_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newAddress, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -62,9 +82,10 @@ address.put('/updateAddress/:id', (req, res)=>{
 address.delete('/deleteAddress/:id', (req, res) => {
     let sql = 'DELETE FROM address WHERE address_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

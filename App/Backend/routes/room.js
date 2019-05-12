@@ -12,9 +12,14 @@ room.post('/createRoom', (req, res)=>{
         "fk_office_id": req.body.fk_office_id
     };
     let query = db.query(sql, newRoom, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -22,9 +27,14 @@ room.post('/createRoom', (req, res)=>{
 room.get('/readAllRooms', (req, res)=>{
             let sql = 'SELECT * From room'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -32,9 +42,14 @@ room.get('/readAllRooms', (req, res)=>{
 room.get('/readRoom/:id', (req, res)=>{
     let sql = 'SELECT * From room where room_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -47,9 +62,14 @@ room.put('/updateRoom/:id', (req, res)=>{
     };
     let sql = 'UPDATE room Set ? WHERE room_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newRoom, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -58,9 +78,10 @@ room.put('/updateRoom/:id', (req, res)=>{
 room.delete('/deleteRoom/:id', (req, res) => {
     let sql = 'DELETE FROM room WHERE room_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

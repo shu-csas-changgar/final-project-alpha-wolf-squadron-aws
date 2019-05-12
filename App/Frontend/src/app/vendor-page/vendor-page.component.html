@@ -8,7 +8,21 @@
       <th>Address ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let vendor of venodrs">
+        <td>{{vendor.vendor_id}}</td>
+        <td>{{vendor.name}}</td>
+        <td>{{vendor.phone}}</td>
+        <td>{{vendor.email}}</td>
+        <td>{{vendor.fk_address_id}}</td>
+        <td>{{vendor.date_created}}</td>
+        <td>{{vendor.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='vendorForm' (ngSubmit)='createSubmit()'>
     <label>
