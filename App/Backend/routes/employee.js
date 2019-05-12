@@ -7,16 +7,16 @@ const db = require('../db');
 employee.post('/createEmployee', (req, res)=>{
     let sql = 'INSERT INTO employee SET ?';
     let newEmployee = {
-        "employee_id": req.body.employee_id,
         "first_name": req.body.first_name,
         "last_name": req.body.last_name,
         "phone_number": req.body.phone_number,
         "work_phone_number": req.body.work_phone_number,
         "email": req.body.email,
         "username": req.body.username,
+        "password": req.body.password,
         "active": req.body.active,
         "fk_address_id": req.body.fk_address_id,
-        "fk_room_id": req.body.fk_room_id,
+        "fk_room_id": req.body.fk_room_id
     };
     let query = db.query(sql, newEmployee, (err, result) => {
         if(err) throw err;
@@ -48,19 +48,19 @@ employee.get('/readEmployee/:id', (req, res)=>{
 //Update employee based on id
 employee.put('/updateEmployee/:id', (req, res)=>{
     let newEmployee = {
-        "employee_id": req.body.employee_id,
         "first_name": req.body.first_name,
         "last_name": req.body.last_name,
         "phone_number": req.body.phone_number,
         "work_phone_number": req.body.work_phone_number,
         "email": req.body.email,
         "username": req.body.username,
+        "password": req.body.password,
         "active": req.body.active,
         "fk_address_id": req.body.fk_address_id,
-        "fk_room_id": req.body.fk_room_id,
+        "fk_room_id": req.body.fk_room_id
     };
     let sql = 'UPDATE employee Set ? WHERE employee_id = ' + db.escape(req.params.id);
-    let query = db.query(sql, newemployee, (err, result) => {
+    let query = db.query(sql, newEmployee, (err, result) => {
         if(err) throw err;
         console.log(result);
         res.send("it worked");

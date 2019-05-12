@@ -7,7 +7,6 @@ const db = require('../db');
 inventory.post('/createInventory', (req, res)=>{
     let sql = 'INSERT INTO inventory SET ?';
     let newInventory = {
-        "inventory_id": req.body.inventory_id,
         "fk_equipment_id": req.body.fk_equipment_id,
         "fk_employee_id": req.body.fk_employee_id,
         "fk_room_id": req.body.fk_room_id
@@ -42,7 +41,6 @@ inventory.get('/readInventory/:id', (req, res)=>{
 //Update inventory based on id
 inventory.put('/updateInventory/:id', (req, res)=>{
     let newInventory = {
-        "inventory_id": req.body.inventory_id,
         "fk_equipment_id": req.body.fk_equipment_id,
         "fk_employee_id": req.body.fk_employee_id,
         "fk_room_id": req.body.fk_room_id
