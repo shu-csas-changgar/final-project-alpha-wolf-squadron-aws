@@ -12,7 +12,6 @@ import { FormControl } from '@angular/forms';
 export class ViewPageComponent implements OnInit {
 
   views: View[] = []
-  ID = new FormControl('')
   
   constructor(private viewService: ViewServiceService) { }
 
@@ -27,7 +26,4 @@ export class ViewPageComponent implements OnInit {
       this.views = data;
     });
   }
-
-
-
 }
