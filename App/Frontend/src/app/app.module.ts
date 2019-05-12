@@ -21,6 +21,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { CrudPageComponent } from './crud-page/crud-page.component';
 import { EquipmentPageComponent } from './equipment-page/equipment-page.component';
 import { ViewServiceService } from './service/view-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ViewServiceService } from './service/view-service.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [ViewServiceService],
   bootstrap: [AppComponent]

@@ -4,7 +4,8 @@ import { View } from '../models/view';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../app.component.css'],
+  providers: [ViewServiceService]
 })
 export class ViewPageComponent implements OnInit {
 
