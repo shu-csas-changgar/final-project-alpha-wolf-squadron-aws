@@ -9,6 +9,15 @@
       <th>Date Created</th>
       <th>Last Updated</th>
     </thead>
+    <tr tableCol *ngFor="let office of offices">
+        <td>{{office.office_id}}</td>
+        <td>{{office.office}}</td>
+        <td>{{office.phone_number}}</td>
+        <td>{{office.equipment_contact}}</td>
+        <td>{{office.fk_address_id}}</td>
+        <td>{{office.date_created}}</td>
+        <td>{{office.last_update}}</td>
+      </tr>
   </table>
   <form [formGroup]='officeForm' (ngSubmit)='createSubmit()'>
     <label>
