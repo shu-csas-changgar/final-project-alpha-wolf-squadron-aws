@@ -26,9 +26,9 @@
       <span ng-if="!view.fk_employee_id">null</span>
     </td>
     <td>
-      <span ng-if="view.fk_room_id != null;then show; else notShow"></span>
+      <span *ngif="view.fk_room_id != null;then show; else notShow"></span>
       <span #show>{{view.fk_room_id}}</span>
-      <span #notShow>"N/A"</span>
+      <span #notShow>N/A</span>
     </td>
 </table>
 
