@@ -15,8 +15,34 @@
         <td>{{equipment.equipment_id}}</td>
         <td>{{equipment.name}}</td>
         <td>{{equipment.active}}</td>
-        <td>{{equipment.warranty_end_date}}</td>
-        <td>{{equipment.fk_lease_id}}</td>
+        <td>
+          <ng-template *ngIf="equipment.warranty_end_date != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{equipment.warranty_end_date}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
+        <td>
+          <ng-template *ngIf="equipment.fk_lease_id != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{equipment.fk_lease_id}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
         <td>{{equipment.fk_vendor_id}}</td>
         <td>{{equipment.fk_type_id}}</td>
         <td>{{equipment.date_created}}</td>

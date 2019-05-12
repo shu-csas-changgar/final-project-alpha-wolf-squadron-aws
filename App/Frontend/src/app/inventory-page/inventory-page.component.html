@@ -11,8 +11,34 @@
     <tr tableCol *ngFor="let inventory of inventories">
         <td>{{inventory.inventory_id}}</td>
         <td>{{inventory.fk.equipment_id}}</td>
-        <td>{{inventory.fk_employee_id}}</td>
-        <td>{{inventory.fk_room_id}}</td>
+        <td>
+          <ng-template *ngIf="inventory.fk_employee_id != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{inventory.fk_employee_id}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
+        <td>
+          <ng-template *ngIf="inventory.fk_room_id != null;then show; else notShow">
+          </ng-template>
+          <ng-template #show>
+            <p>
+              {{inventory.fk_room_id}}
+            </p>
+          </ng-template>
+          <ng-template #notShow>
+            <p>
+              N/A
+            </p>
+          </ng-template>
+        </td>
         <td>{{inventory.date_created}}</td>
         <td>{{inventory.last_update}}</td>
       </tr>

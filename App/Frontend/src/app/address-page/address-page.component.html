@@ -28,7 +28,19 @@
       </ng-template>
     </td>
     <td>{{address.district}}</td>
-    <td>{{address.postal_code}}</td>
+    <td>
+      <ng-template *ngIf="address.postal_code != null;then show; else notShow">
+      </ng-template>
+      <ng-template #show>
+        <p>
+          {{address.postal_code}}
+        </p>
+      <ng-template #notShow>
+        <p>
+          N/A
+        </p>
+      </ng-template>
+    </td>
     <td>{{address.fk_city_id}}</td>
     <td>{{address.date_created}}</td>
     <td>{{address.last_update}}</td>
