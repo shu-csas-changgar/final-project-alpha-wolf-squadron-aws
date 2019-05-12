@@ -13,7 +13,7 @@
     <td>{{country.date_update}}</td>
   </tr>
 </table>
-<form [formGroup]= 'countryForm' ngSubmit='createSubmit()'>
+<form [formGroup]= 'countryForm' (ngSubmit)='addCountry()'>
   <label>Country Name: <input type ="text" formControlName ='country'></label>
   <button type="submit" [disabled] ="!countryForm.valid">ADD</button>
 </form>
