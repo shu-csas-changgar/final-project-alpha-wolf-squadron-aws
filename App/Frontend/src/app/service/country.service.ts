@@ -16,4 +16,14 @@ export class CountryService {
   getCountry() {
     return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
+
+  addCountry(newCountry) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createCountry`, newCountry, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteCountry(id){
+    return this.http.delete(`${this.uri}/deleteCountry/` + id).pipe(map(res => res.json()));
+  }
 }

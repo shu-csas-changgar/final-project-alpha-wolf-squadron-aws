@@ -42,7 +42,7 @@ type.put('/updateType/:id', (req, res)=>{
         "type": req.body.type
     };
     let sql = 'UPDATE type Set ? WHERE type_id = ' + db.escape(req.params.id);
-    let query = db.query(sql, newtype, (err, result) => {
+    let query = db.query(sql, newType, (err, result) => {
         if(err) throw err;
         console.log(result);
         res.send("it worked");

@@ -6,6 +6,12 @@
     <th>Date Created</th>
     <th>Last Updated</th>
   </thead>
+  <tr tableCol *ngFor="let country of countries">
+    <td>{{country.country_id}}</td>
+    <td>{{country.country}}</td>
+    <td>{{country.date_created}}</td>
+    <td>{{country.date_update}}</td>
+  </tr>
 </table>
 <form [formGroup]= 'countryForm' ngSubmit='createSubmit()'>
   <label>Country Name: <input type ="text" formControlName ='country'></label>
