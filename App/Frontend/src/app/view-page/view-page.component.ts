@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ViewServiceService } from '../service/view-service.service';
+import { View } from '../models/view';
 @Component({
   selector: 'app-view-page',
   templateUrl: './view-page.component.html',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPageComponent implements OnInit {
 
-  constructor() { }
+  views: View[] = []
+  constructor(private viewService: ViewServiceService) { }
 
   ngOnInit() {
+    this.fetchViews();
+  }
+
+  fetchViews() {
+    this.viewService
+    .getView()
+    .subscribe((data: View[]) => {
+      this.views = data;
+    });
   }
 
 }

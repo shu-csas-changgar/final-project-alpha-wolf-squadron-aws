@@ -18,6 +18,7 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ViewService } from './service/view-service.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
