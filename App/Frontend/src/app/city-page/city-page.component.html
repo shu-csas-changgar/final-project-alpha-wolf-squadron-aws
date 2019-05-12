@@ -7,6 +7,13 @@
     <th>Date Created</th>
     <th>Last Updated</th>
   </thead>
+  <tr tableCol *ngFor="let city of cities">
+    <td>{{city.city_id}}</td>
+    <td>{{city.city}}</td>
+    <td>{{city.fk_country_id}}</td>
+    <td>{{city.date_created}}</td>
+    <td>{{city.last_update}}</td>
+  </tr>
 </table>
 <form [formGroup]='cityForm' (ngSubmit)='onSubmit()'>
   <label>
