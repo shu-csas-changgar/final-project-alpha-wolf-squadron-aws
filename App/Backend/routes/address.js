@@ -16,7 +16,7 @@ address.post('/addAddress', (req, res)=>{
     let query = db.query(sql, newAddress, (err, result) => {
         if(err) throw err;
         console.log(result);
-        res.send("it worked")
+        res.send("it worked");
     });
 });
 
@@ -42,12 +42,21 @@ address.get('/readAddress/:id', (req, res)=>{
 
 //Update address based on id
 address.put('/updateAddress/:id', (req, res)=>{
-    let sql = 'UPDATE address Set address = ' + req.body.address + ', address2 = ' + req.body.address2 + ', district = '  + req.body.district + ', postal_code = '  + req.body.postal_code + ', fk_city_id = '  + req.body.fk_city_id + ' WHERE address_id = ' + db.escape(req.params.id);
-    let query = db.query(sql, (err, results) => {
+    let newAddress = {
+        "address": req.body.address,
+        "address2": req.body.address2,
+        "district": req.body.district,
+        "postal_code": req.body.postal_code,
+        "fk_city_id": req.body.fk_city_id
+    };
+    let sql = 'UPDATE address Set ? WHERE address_id = ' + db.escape(req.params.id);
+    let query = db.query(sql, newAddress, (err, result) => {
         if(err) throw err;
-        console.log(results);
+        console.log(result);
+        res.send("it worked");
     });
 });
+
 
 //Delete address based on id
 address.delete('/deleteAddress/:id', (req, res) => {
@@ -55,6 +64,7 @@ address.delete('/deleteAddress/:id', (req, res) => {
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
+        res.send("It worked!");
     });
 });
 
