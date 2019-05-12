@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RoomPageComponent implements OnInit {
 
-  Rooms: Room[] = []
+  rooms: Room[] = []
   roomForm = new FormGroup({
     name: new FormControl,
     floor: new FormControl,
@@ -27,7 +27,7 @@ export class RoomPageComponent implements OnInit {
     this.RoomService
     .getRoom()
     .subscribe((data: Room[]) => {
-      this.Rooms = data;
+      this.rooms = data;
     });
   }
 
