@@ -14,9 +14,9 @@
     <td>{{city.fk_country_id}}</td>
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
-    <td class= 'update-delete-btn'>
-      <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-      <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+    <td class='update-delete-btn'>
+      <button type ="button" (click)='updateSubmit(city)'>update</button>
+      <button type="button" (click)='deleteSubmit(city)'>delete</button>
     </td>
   </tr>
 </table>

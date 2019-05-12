@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CityPageComponent implements OnInit {
 
+  toggleUpdateButton:boolean = false;
   cities: City[] = []
   cityForm = new FormGroup({
     city: new FormControl(''),
@@ -31,6 +32,20 @@ export class CityPageComponent implements OnInit {
     });
   }
   
+  updateSubmit(c: City){
+    this.cityForm.patchValue({
+      city: c.city_id,
+      country_id: c.fk_country_id
+    })
+  }
+
+  toggleUpdateAdd(){
+    this.toggleUpdateButton = !this.toggleUpdateButton
+  }
+
+  deleteSubmit(city: City){
+    console.log(city.city_id);
+  }
   onSubmit(){
     console.log(this.cityForm.value)
   }
