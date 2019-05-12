@@ -34,17 +34,17 @@ export class CountryPageComponent implements OnInit {
   }
 
 
-   deleteCountry(id:any) {
+ /* deleteCountry(id: any) {
     var countries = this.countries;
     this.countryService.deleteCountry(id).subscribe(() => {
-      for(var i = 0; i< this.countries.length; i++){
-          if(countries[i].country_id == id){
-            countries.splice(i,1);
-          }
+      for (var i = 0; i < this.countries.length; i++) {
+        if (countries[i].country_id == id) {
+          countries.splice(i, 1);
         }
       }
+    }
     });
-  }
+}*/
 
   
 }
