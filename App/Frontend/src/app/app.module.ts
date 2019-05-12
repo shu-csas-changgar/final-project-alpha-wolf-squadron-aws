@@ -18,6 +18,8 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CrudPageComponent } from './crud-page/crud-page.component';
+import { EquipmentPageComponent } from './equipment-page/equipment-page.component';
 import { ViewService } from './service/view-service.service';
 
 @NgModule({
@@ -37,7 +39,9 @@ import { ViewService } from './service/view-service.service';
     RoomPageComponent,
     TypePageComponent,
     VendorPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    CrudPageComponent,
+    EquipmentPageComponent
   ],
   imports: [
     BrowserModule,

@@ -14,11 +14,13 @@ import { TypePageComponent } from './type-page/type-page.component';
 import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { ViewPageComponent } from './view-page/view-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CrudPageComponent } from './crud-page/crud-page.component';
 
 const routes: Routes = [
 {path:'', redirectTo: '/login', pathMatch: 'full'},
 {path:'home', component: HomePageComponent},
 {path:'login', component: LoginPageComponent},
+{path: 'crud', component: CrudPageComponent},
 {path:'city', component: CityPageComponent},
 {path:'address', component: AddressPageComponent},
 {path:'county', component: CountryPageComponent},

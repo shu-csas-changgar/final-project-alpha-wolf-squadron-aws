@@ -51,7 +51,7 @@ address.put('/updateAddress/:id', (req, res)=>{
 
 //Delete address based on id
 address.delete('/deleteAddress/:id', (req, res) => {
-    let sql = 'DELETE FROM address WHERE id = ' + db.escape(req.params.id);
+    let sql = 'DELETE FROM address WHERE address_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
