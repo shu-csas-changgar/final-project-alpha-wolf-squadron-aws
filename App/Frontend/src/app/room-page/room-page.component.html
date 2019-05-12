@@ -7,7 +7,20 @@
       <th>Office ID</th>
       <th>Date Created</th>
       <th>Last Updated</th>
+      <th>Update/Delete</th>
     </thead>
+    <tr tableCol *ngFor="let room of rooms">
+        <td>{{room.room_id}}</td>
+        <td>{{room.room}}</td>
+        <td>{{room.floor}}</td>
+        <td>{{room.fk_office_id}}</td>
+        <td>{{room.date_created}}</td>
+        <td>{{room.last_update}}</td>
+        <td class= 'update-delete-btn'>
+          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
+          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+        </td>
+      </tr>
   </table>
   <form [formGroup]='roomForm' (ngSubmit)='createSubmit()'>
     <label>
