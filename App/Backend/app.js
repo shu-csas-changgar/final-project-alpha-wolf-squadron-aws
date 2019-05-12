@@ -7,11 +7,18 @@ var path = require('path');
 var app = express();
 
 //All routes
-const employeeRoute = require('./routes/employee');
-const viewRoute = require('./routes/view');
-const addressRoute = require('./routes/address');
+const addressRoute = require('./routes/address')
+const cityRoute = require('./routes/city');
 const countryRoute = require('./routes/country');
-const cityRoute = require('./routes/city')
+const employeeRoute = require('./routes/employee');
+const equipmentRoute = require('./routes/equipment')
+const inventoryRoute = require('./routes/inventory')
+const leaseRoute = require('./routes/lease')
+const officeRoute = require('./routes/office')
+const roomRoute = require('./routes/room')
+const typeRoute = require('./routes/type')
+const vendorRoute = require('./routes/vendor')
+const viewRoute = require('./routes/view');
 
 const port = 3000;
 
@@ -27,11 +34,18 @@ app.use(bodyparser.json());
 //app.use(express.static(path.join(__dirname, 'public')));
 
 //api extension for routes
-app.use('/api', employeeRoute);
-app.use('/api', viewRoute);
 app.use('/api', addressRoute);
-app.use('/api', countryRoute);
 app.use('/api', cityRoute);
+app.use('/api', countryRoute);
+app.use('/api', employeeRoute);
+app.use('/api', equipmentRoute);
+app.use('/api', inventoryRoute);
+app.use('/api', leaseRoute);
+app.use('/api', officeRoute);
+app.use('/api', roomRoute);
+app.use('/api', typeRoute);
+app.use('/api', vendorRoute);
+app.use('/api', viewRoute);
 
 //testing server
 app.get('/', (req, res)=> {
