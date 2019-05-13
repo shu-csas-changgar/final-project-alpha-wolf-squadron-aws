@@ -15,6 +15,7 @@ import { VendorPageComponent } from './vendor-page/vendor-page.component';
 import { ViewPageComponent } from './view-page/view-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CrudPageComponent } from './crud-page/crud-page.component';
+import { EquipmentPageComponent } from './equipment-page/equipment-page.component';
 
 const routes: Routes = [
 {path:'', redirectTo: '/login', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
 {path:'address', component: AddressPageComponent},
 {path:'country', component: CountryPageComponent},
 {path:'employee', component: EmployeePageComponent},
+{path:'equipment', component: EquipmentPageComponent},
 {path:'inventory', component: InventoryPageComponent},
 {path:'lease', component: LeasePageComponent},  
 {path:'office', component:  OfficePageComponent},

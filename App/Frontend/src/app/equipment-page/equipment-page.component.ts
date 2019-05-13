@@ -6,7 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-equipment-page',
   templateUrl: './equipment-page.component.html',
-  styleUrls: ['./equipment-page.component.css'],
+  styleUrls: ['../app.component.css'],
   providers: [EquipmentService]
 })
 export class EquipmentPageComponent implements OnInit {
