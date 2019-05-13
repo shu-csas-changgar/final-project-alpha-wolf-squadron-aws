@@ -47,7 +47,7 @@ updateCountry() {
       }
     }
   });
-  this.toggleUpdateButton = !this.toggleUpdateButton;
+  this.toggleUpdateButton = false;
 }
 
   deleteCountry(id: any) {
@@ -63,6 +63,6 @@ updateCountry() {
 
   updateFillIn(country: Country){
     this.name = country.country;
-    this.toggleUpdateButton = !this.toggleUpdateButton;
+    this.toggleUpdateButton = true;
   }
 }
