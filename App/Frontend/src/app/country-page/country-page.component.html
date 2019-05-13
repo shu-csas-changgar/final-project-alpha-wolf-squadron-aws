@@ -18,7 +18,10 @@
     </td>
   </tr>
 </table>
-<form [formGroup]= 'countryForm' (ngSumbit)='addCountry()'>
-  <label>Country Name: <br><input type ="text" formControlName ='country'></label><br>
-  <button type="submit" [disabled]= '!countryForm.valid'>ADD</button>
+<form (submit) = 'addCountry()'>
+  <div Class = "form-group">
+    <label>Country Name</label>
+    <input type = "text" [(ngModel)] = "name" name = "country" class = "form-control" required>
+  </div>
+  <input type = "submit" class = "btn btn btn-success" value = "Add">
 </form>

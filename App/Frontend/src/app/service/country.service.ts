@@ -30,6 +30,6 @@ export class CountryService {
   }
 
   deleteCountry(id){
-    return this.http.delete(`${this.uri}/deleteCountry/` + id)
+    return this.http.delete(`${this.uri}/deleteCountry/${id}`)
   }
 }
