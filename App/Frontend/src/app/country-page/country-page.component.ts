@@ -15,6 +15,7 @@ export class CountryPageComponent implements OnInit {
   countries: Country[] = [];
   country: Country;
   name: String;
+  id: any;
 
   constructor(private countryService: CountryService) { }
 
@@ -40,16 +41,22 @@ updateCountry() {
   const newCountry = {
     country: this.name
   }
-  this.countryService.updateCountry(newCountry).subscribe(country => {
+  const data = {
+    countryChange: newCountry,
+    idSearch: this.id
+  }
+  this.countryService.updateCountry(data).subscribe(country => {
     for(var i = 0; i < countries.length; i++ ){
       if (countries[i].country_id == country.country_id){
         countries[i] = country;
       }
     }
-  });
-  this.toggleUpdateButton = false;
-}
-
+    this.countryService
+    .getCountry()
+    .subscribe(countries => this.countries = countries);
+    });
+    this.toggleUpdateButton = false;
+  }
   deleteCountry(id: any) {
     var countries = this.countries;
   this.countryService.deleteCountry(id).subscribe(data =>{
@@ -59,10 +66,13 @@ updateCountry() {
       }
     }
   });
-  }
+}
 
-  updateFillIn(country: Country){
-    this.name = country.country;
-    this.toggleUpdateButton = true;
-  }
+updateFillIn(country: Country){
+  this.name =country.country;
+  this.id = country.country_id;
+  this.toggleUpdateButton = true;
+}
+
+
 }
