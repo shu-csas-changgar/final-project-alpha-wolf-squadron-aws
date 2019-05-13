@@ -15,12 +15,22 @@ export class AddressService {
   constructor(private http: Http) { }
 
   getAddress() {
-    return this.http.get(`${this.uri}/readAllAddresses`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addAddress(newAddress) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createAddress`, newAddress, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateAddress(theAddress) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateAddress/${theAddress.address_id}`, theAddress, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteAddress(id){
+    return this.http.delete(`${this.uri}/deleteAddress/${id}`)
   }
 }

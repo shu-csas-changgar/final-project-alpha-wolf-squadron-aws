@@ -15,7 +15,7 @@ export class CityPageComponent implements OnInit {
   cities: City[] = []
   cityForm = new FormGroup({
     city: new FormControl(''),
-    country_id: new FormControl('')
+    fk_country_id: new FormControl('')
   })
 
   constructor(private cityService: CityService) { }

@@ -14,8 +14,8 @@ export class VendorPageComponent implements OnInit {
   vendors: Vendor[] = []
   vendorForm = new FormGroup({
     name: new FormControl,
-    phone_number: new FormControl,
-    contact_email: new FormControl,
+    phone: new FormControl,
+    email: new FormControl,
     fk_address_id: new FormControl
   })
   constructor(private VendorService: VendorService) { }

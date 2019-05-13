@@ -58,11 +58,14 @@ updateCountry() {
       }
     }
   });
-}
+  }
+
+
+  updateFillIn(country: Country){
+    this.name = country.country;
+  }
 
   toggleUpdateAdd(){
     this.toggleUpdateButton = !this.toggleUpdateButton
   }
-
-
 }

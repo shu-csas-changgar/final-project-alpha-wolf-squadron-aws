@@ -13,7 +13,7 @@ export class RoomPageComponent implements OnInit {
 
   rooms: Room[] = []
   roomForm = new FormGroup({
-    name: new FormControl,
+    room: new FormControl,
     floor: new FormControl,
     fk_office_id: new FormControl
   })

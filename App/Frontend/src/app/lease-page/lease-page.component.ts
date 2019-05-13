@@ -13,7 +13,7 @@ export class LeasePageComponent implements OnInit {
 
   leases: Lease[] = []
   leaseForm = new FormGroup({
-    star_date: new FormControl,
+    start_date: new FormControl,
     end_date : new FormControl
   })
   constructor(private LeaseService: LeaseService) { }
