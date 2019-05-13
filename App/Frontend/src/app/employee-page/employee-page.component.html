@@ -34,7 +34,7 @@
         </td>
       </tr>
   </table>
-  <form [formGroup]='employeeForm' (ngSubmit)='createSubmit()'>
+  <form [formGroup]='employeeForm' (ngSubmit)='addEmployee()'>
     <label>
       First Name:<br><input type="text" formControlName="firts_name"><br>
     </label>
@@ -54,10 +54,10 @@
       Username:<br><input type="text" formControlName="username"><br>
     </label>
     <label>
-      Address ID:<br><input type="text" formControlName="address_id"><br>
+      Address ID:<br><input type="text" formControlName="fk_address_id"><br>
     </label>
     <label>
-      Room ID:<br><input type="text" formControlName="room_id"><br>
+      Room ID:<br><input type="text" formControlName="fk_room_id"><br>
     </label>
     <button type="submit" [disabled] ="!employeeForm.valid">ADD</button>
   </form>

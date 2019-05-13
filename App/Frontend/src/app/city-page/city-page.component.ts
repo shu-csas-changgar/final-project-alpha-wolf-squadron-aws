@@ -24,6 +24,15 @@ export class CityPageComponent implements OnInit {
     this.fetchCity();
   }
 
+  addCity() {
+    var jsonFormat = JSON.stringify(this.cityForm.getRawValue());
+    this.cityService.addCity(jsonFormat).subscribe(City => {
+      this.cities.push(City);
+    }
+    );
+    console.log(jsonFormat);
+  }
+
   fetchCity() {
     this.cityService
     .getCity()

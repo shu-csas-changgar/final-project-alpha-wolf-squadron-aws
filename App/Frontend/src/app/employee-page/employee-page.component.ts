@@ -28,6 +28,15 @@ export class EmployeePageComponent implements OnInit {
     this.fetchEmployee();
   }
 
+  addEmployee() {
+    var jsonFormat = JSON.stringify(this.employeeForm.getRawValue());
+    this.employeesService.addEmployee(jsonFormat).subscribe(Employee => {
+      this.employees.push(Employee);
+    }
+    );
+    console.log(jsonFormat);
+  }
+
   fetchEmployee() {
     this.employeesService
     .getEmployee()

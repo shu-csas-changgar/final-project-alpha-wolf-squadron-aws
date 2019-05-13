@@ -17,4 +17,10 @@ export class EquipmentService {
   getEquipment() {
     return this.http.get(`${this.uri}/readAllEquipment`).pipe(map(res => res.json()));
   }
+
+  addEquipment(newEquipment) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createEquipment`, newEquipment, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

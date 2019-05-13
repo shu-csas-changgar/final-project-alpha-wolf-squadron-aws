@@ -17,4 +17,10 @@ export class OfficeService {
   getOffice() {
     return this.http.get(`${this.uri}/readAllOffices`).pipe(map(res => res.json()));
   }
+
+  addOffice(newOffice) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createOffice`, newOffice, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

@@ -22,7 +22,7 @@
         </td>
       </tr>
   </table>
-  <form [formGroup]='roomForm' (ngSubmit)='createSubmit()'>
+  <form [formGroup]='roomForm' (ngSubmit)='addRoom()'>
     <label>
       Room Name:<br><input type="text" formControlName="name"><br>
     </label>
@@ -30,7 +30,7 @@
       Floor Number:<br><input type="text" formControlName="floor"><br>
     </label>
     <label>
-      Office ID:<br><input type="text" formControlName="office_id"><br>
+      Office ID:<br><input type="text" formControlName="fk_office_id"><br>
     </label>
     <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
   </form>

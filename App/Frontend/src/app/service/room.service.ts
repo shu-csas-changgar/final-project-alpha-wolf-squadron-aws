@@ -16,4 +16,10 @@ export class RoomService {
   getRoom() {
     return this.http.get(`${this.uri}/readAllRooms`).pipe(map(res => res.json()));
   }
+
+  addRoom(newRoom) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createRoom`, newRoom, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

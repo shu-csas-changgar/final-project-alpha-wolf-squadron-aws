@@ -27,6 +27,15 @@ export class AddressPageComponent implements OnInit {
     this.fetchAddress();
   }
 
+  addAddress() {
+    var jsonFormat = JSON.stringify(this.addressForm.getRawValue());
+    this.addressService.addAddress(jsonFormat).subscribe(Address => {
+      this.addresses.push(Address);
+    }
+    );
+    console.log(jsonFormat);
+  }
+
   fetchAddress() {
     this.addressService
     .getAddress()

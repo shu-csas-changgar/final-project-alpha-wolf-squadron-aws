@@ -54,27 +54,27 @@
         </td>
       </tr>
   </table>
-  <form [formGroup]='equipmentForm' (ngSubmit)='createSubmit()'>
+  <form [formGroup]='equipmentForm' (ngSubmit)='addEquipment()'>
     <label>
       Equipment Name:<input type="text" formControlName="name">
     </label>
     <label>
-      Active?:<input type="text" formControlName="active?">
+      Active?:<input type="text" formControlName="active">
     </label>
     <label>
       Warranty End Date:<input type="text" formControlName="warranty_end_date">
     </label>
     <label>
-      Lease ID:<input type="text" formControlName="lease_id">
+      Lease ID:<input type="text" formControlName="fk_lease_id">
     </label>
     <label>
-      Vendor ID:<input type="text" formControlName="vendor_id">
+      Vendor ID:<input type="text" formControlName="fk_vendor_id">
     </label>
     <label>
-      Type ID:<input type="text" formControlName="type_id">
+      Type ID:<input type="text" formControlName="fk_type_id">
     </label>
     <label>
-      Address ID:<input type="text" formControlName="address_id">
+      Address ID:<input type="text" formControlName="fk_address_id">
     </label>
     <button type="submit" [disabled] ="!equipmentForm.valid">ADD</button>
   </form>

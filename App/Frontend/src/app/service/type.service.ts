@@ -16,4 +16,10 @@ export class TypeService {
   getType() {
     return this.http.get(`${this.uri}/readAllTypes`).pipe(map(res => res.json()));
   }
+
+  addType(newType) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createType`, newType, {headers: headers}).pipe(map(res => res.json()));
+  }
 }
