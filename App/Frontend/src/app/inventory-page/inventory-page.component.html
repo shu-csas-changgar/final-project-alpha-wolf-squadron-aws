@@ -43,7 +43,7 @@
         <td>{{inventory.last_update}}</td>
       </tr>
   </table>
-  <form [formGroup]='inventoryForm' (ngSubmit)='createSubmit()'>
+  <form [formGroup]='inventoryForm' (ngSubmit)='addInventory()'>
     <label>
       Equipment ID:<br><input type="text" formControlName="equipment_id"><br>
     </label>

@@ -18,10 +18,10 @@ export class CountryPageComponent implements OnInit {
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
-    this.fetchCity();
+    this.fetchCountry();
   }
 
-  fetchCity() {
+  fetchCountry() {
     this.countryService
     .getCountry()
     .subscribe((data: Country[]) => {
@@ -31,14 +31,14 @@ export class CountryPageComponent implements OnInit {
 
   addCountry() {
     this.countryService.addCountry(this.countryForm.value).subscribe();
-    this.fetchCity();
+    this.fetchCountry();
 
   }
 
 
-   deleteCountry(country: Country) {
-    this.countryService.deleteCountry(country.country_id).subscribe();
-    this.fetchCity();
+   deleteCountry(id: any) {
+    this.countryService.deleteCountry(id).subscribe();
+    this.fetchCountry();
 
   }
 

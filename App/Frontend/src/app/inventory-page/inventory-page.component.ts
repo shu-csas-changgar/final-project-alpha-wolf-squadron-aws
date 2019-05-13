@@ -23,6 +23,15 @@ export class InventoryPageComponent implements OnInit {
     this.fetchInventory();
   }
 
+  addInventory() {
+    var jsonFormat = JSON.stringify(this.inventoryForm.getRawValue());
+    this.InventoryService.addInventory(jsonFormat).subscribe(Employee => {
+      this.inventories.push(Employee);
+    }
+    );
+    console.log(jsonFormat);
+  }
+
   fetchInventory() {
     this.InventoryService
     .getInventory()

@@ -17,4 +17,10 @@ export class AddressService {
   getAddress() {
     return this.http.get(`${this.uri}/readAllAddresses`).pipe(map(res => res.json()));
   }
+
+  addAddress(newAddress) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createAddress`, newAddress, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

@@ -17,5 +17,10 @@ export class ViewServiceService {
     return this.http.get(`${this.uri}/view`).pipe(map(res => res.json()));
   }
   
+  addView(newView) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createView`, newView, {headers: headers}).pipe(map(res => res.json()));
+  }
 }
 

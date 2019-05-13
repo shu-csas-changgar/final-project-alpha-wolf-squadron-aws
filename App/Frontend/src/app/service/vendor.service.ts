@@ -17,4 +17,10 @@ export class VendorService {
   getVendor() {
     return this.http.get(`${this.uri}/readAllVendors`).pipe(map(res => res.json()));
   }
+
+  addVendor(newVendor) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.uri}/createVendor`, newVendor, {headers: headers}).pipe(map(res => res.json()));
+  }
 }
