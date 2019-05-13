@@ -15,17 +15,31 @@
         <td>{{lease.date_created}}</td>
         <td>{{lease.last_update}}</td>
         <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+          <button (click) ='updateFillIn(lease)'>update</button>
+          <button (click) ='deleteLease(lease.lease_id)'>delete</button>
         </td>
       </tr>
   </table>
-  <form [formGroup]='leaseForm' (ngSubmit)='addLease()'>
-    <label>
-      Lease Start Date:<br><input type="text" formControlName="start_date"><br>
-    </label>
-    <label>
-      Lease End Date:<br><input type="text" formControlName="end_date"><br>
-    </label>
-    <button type="submit" [disabled] ="!leaseForm.valid">ADD</button>
+  <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addLease()'>
+    <div Class="form-group">
+      <label>Lease Start Date:</label>
+      <input type="text" [(ngModel)]="start_date" name="start_date" class="form-control" required>
+      <label>Lease End Date:</label>
+      <input type="text" [(ngModel)]="end_date" name="end_date" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateLease()'>
+    <div Class="form-group">
+      <label>Lease Start Date:</label>
+      <input type="text" [(ngModel)]="start_date" name="start_date" class="form-control" required>
+      <label>Lease End Date:</label>
+      <input type="text" [(ngModel)]="end_date" name="end_date" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   providers: [EmployeeService]
 })
 export class EmployeePageComponent implements OnInit {
-
+  toggleUpdateButton:boolean = false;
   employees: Employee[] = []
   employeeForm = new FormGroup({
     first_name: new FormControl,

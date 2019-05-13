@@ -1,41 +1,56 @@
 <app-root-navigation></app-root-navigation>
 <table class="Vendor-Table">
-    <thead>
-      <th>Vendor ID</th>
-      <th>Vendor Name</th>
-      <th>Phone Number</th>
-      <th>Contact Email</th>
-      <th>Address ID</th>
-      <th>Date Created</th>
-      <th>Last Updated</th>
-      <th>Update/Delete</th>
-    </thead>
-    <tr tableCol *ngFor="let vendor of vendors">
-        <td>{{vendor.vendor_id}}</td>
-        <td>{{vendor.name}}</td>
-        <td>{{vendor.phone}}</td>
-        <td>{{vendor.email}}</td>
-        <td>{{vendor.fk_address_id}}</td>
-        <td>{{vendor.date_created}}</td>
-        <td>{{vendor.last_update}}</td>
-        <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
-        </td>
-      </tr>
-  </table>
-  <form [formGroup]='vendorForm' (ngSubmit)='addVendor()'>
-    <label>
-      Vendor Name:<br><input type="text" formControlName="name"><br>
-    </label>
-    <label>
-      Phone Number:<br><input type="text" formControlName="phone"><br>
-    </label>
-    <label>
-      Contact Email:<br><input type="text" formControlName="email"><br>
-    </label>
-    <label>
-      Address ID:<br><input type="text" formControlName="fk_address_id"><br>
-    </label>
-    <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
+  <thead>
+    <th>Vendor ID</th>
+    <th>Vendor Name</th>
+    <th>Phone Number</th>
+    <th>Contact Email</th>
+    <th>Address ID</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Update/Delete</th>
+  </thead>
+  <tr tableCol *ngFor="let vendor of vendors">
+    <td>{{vendor.vendor_id}}</td>
+    <td>{{vendor.name}}</td>
+    <td>{{vendor.phone}}</td>
+    <td>{{vendor.email}}</td>
+    <td>{{vendor.fk_address_id}}</td>
+    <td>{{vendor.date_created}}</td>
+    <td>{{vendor.last_update}}</td>
+    <td class= 'update-delete-btn'>
+      <button (click) ='updateFillIn(vendor)'>update</button>
+      <button (click) ='deleteVendor(vendor.vendor_id)'>delete</button>
+    </td>
+  </tr>
+</table>
+<ng-template #show>
+  <form (submit)='addVendor()'>
+    <div Class="form-group">
+      <label>Vendor Name:</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" required>
+      <label>Phone Number:</label>
+      <input type="text" [(ngModel)]="phone" name="phone" class="form-control" required>
+      <label>Contact Email:</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateVendor()'>
+    <div Class="form-group">
+      <label>Vendor Name:</label>
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" required>
+      <label>Phone Number:</label>
+      <input type="text" [(ngModel)]="phone" name="phone" class="form-control" required>
+      <label>Contact Email:</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

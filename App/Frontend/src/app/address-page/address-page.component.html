@@ -2,13 +2,14 @@
 <table class="Address-Table">
   <thead>
     <th>Address ID</th>
-    <th>Address 1</th>
+    <th>Address</th>
     <th>Address 2</th>
     <th>District</th>
     <th>Postal Code</th>
     <th>City ID</th>
     <th>Date Created</th>
     <th>Last Updated</th>
+    <th>Update/Delete</th>
   </thead>
   <tr tableCol *ngFor="let address of addresses">
     <td>{{address.address_id}}</td>
@@ -33,24 +34,44 @@
     <td>{{address.fk_city_id}}</td>
     <td>{{address.date_created}}</td>
     <td>{{address.last_update}}</td>
+    <td class= 'update-delete-btn'>
+      <button (click) ='updateFillIn(address)'>update</button>
+      <button (click) ='deleteAddress(address.address_id)'>delete</button>
+    </td>
   </tr>
 </table>
-<form [formGroup]='addressForm' (ngSubmit)='onSubmit()'>
-  <label>
-    Address 1:<br><input type="text" formControlName="address"><br>
-  </label>
-  <label>
-    Address 2:<br><input type="text" formControlName="address2"><br>
-  </label>
-  <label>
-    District:<br><input type="text" formControlName="district"><br>
-  </label>
-  <label>
-    Postal Code:<br><input type="text" formControlName="postal_code"><br>
-  </label>
-  <label>
-      City ID:<br><input type = "text" formControlName ="fk_city_id"><br>
-  </label>
-  <button type="submit" [disabled] ="!addressForm.valid">ADD</button>
-</form>
-
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addAddress()'>
+    <div Class="form-group">
+      <label>Address:</label>
+      <input type="text" [(ngModel)]="name" name="address" class="form-control" required>
+      <label>Address 2:</label>
+      <input type="text" [(ngModel)]="address2" name="address2" class="form-control" required>
+      <label>District:</label>
+      <input type="text" [(ngModel)]="district" name="district" class="form-control" required>
+      <label>Postal Code:</label>
+      <input type="text" [(ngModel)]="postal_code" name="postal_code" class="form-control" required>
+      <label>City ID:</label>
+      <input type="text" [(ngModel)]="fk_city_id" name="fk_city_id" class="form-control" required>
+     </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
+  </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateAddress()'>
+    <div Class="form-group">
+      <label>Address:</label>
+      <input type="text" [(ngModel)]="name" name="address" class="form-control" required>
+      <label>Address 2:</label>
+      <input type="text" [(ngModel)]="address2" name="address2" class="form-control" required>
+      <label>District:</label>
+      <input type="text" [(ngModel)]="district" name="district" class="form-control" required>
+      <label>Postal Code:</label>
+      <input type="text" [(ngModel)]="postal_code" name="postal_code" class="form-control" required>
+      <label>City ID:</label>
+      <input type="text" [(ngModel)]="fk_city_id" name="fk_city_id" class="form-control" required>
+     </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

@@ -29,35 +29,55 @@
         <td>{{employee.date_created}}</td>
         <td>{{employee.last_update}}</td>
         <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+          <button (click) ='updateFillIn(employee)'>update</button>
+          <button (click) ='deleteEmployee(employee.employee_id)'>delete</button>
         </td>
       </tr>
   </table>
-  <form [formGroup]='employeeForm' (ngSubmit)='addEmployee()'>
-    <label>
-      First Name:<br><input type="text" formControlName="first_name"><br>
-    </label>
-    <label>
-      Last Name:<br><input type="text" formControlName="last_name"><br>
-    </label>
-    <label>
-      Phone Number:<br><input type="text" formControlName="phone_number"><br>
-    </label>
-    <label>
-      Work Phone Number:<br><input type="text" formControlName="work_phone_number"><br>
-    </label>
-    <label>
-      Email:<br><input type="text" formControlName="email"><br>
-    </label>
-    <label>
-      Username:<br><input type="text" formControlName="username"><br>
-    </label>
-    <label>
-      Address ID:<br><input type="text" formControlName="fk_address_id"><br>
-    </label>
-    <label>
-      Room ID:<br><input type="text" formControlName="fk_room_id"><br>
-    </label>
-    <button type="submit" [disabled] ="!employeeForm.valid">ADD</button>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addEmployee()'>
+    <div Class="form-group">
+      <label>First Name:</label>
+      <input type="text" [(ngModel)]="name" name="first_name" class="form-control" required>
+      <label>Last Name:</label>
+      <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control" required>
+      <label>Phone Number::</label>
+      <input type="text" [(ngModel)]="phone_number" name="phone_number" class="form-control" required>
+      <label>Work Phone Number:</label>
+      <input type="text" [(ngModel)]="work_phone_number" name="work_phone_number" class="form-control" required>
+      <label>Email:</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+      <label>Room ID:</label>
+      <input type="text" [(ngModel)]="fk_room_id" name="fk_room_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateEmployee()'>
+    <div Class="form-group">
+      <label>First Name:</label>
+      <input type="text" [(ngModel)]="name" name="first_name" class="form-control" required>
+      <label>Last Name:</label>
+      <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control" required>
+      <label>Phone Number::</label>
+      <input type="text" [(ngModel)]="phone_number" name="phone_number" class="form-control" required>
+      <label>Work Phone Number:</label>
+      <input type="text" [(ngModel)]="work_phone_number" name="work_phone_number" class="form-control" required>
+      <label>Email:</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+      <label>Room ID:</label>
+      <input type="text" [(ngModel)]="fk_room_id" name="fk_room_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

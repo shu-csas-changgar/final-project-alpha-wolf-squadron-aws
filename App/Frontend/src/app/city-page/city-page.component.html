@@ -15,19 +15,31 @@
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
     <td class='update-delete-btn'>
-      <button type ="button" (click)='toggleUpdateAdd()'>update</button>
-      <button type="button" (click)='deleteSubmit(city)'>delete</button>
+      <button type ="button" (click)='updateFillIn()'>update</button>
+      <button type="button" (click)='deleteCity(city.city_id)'>delete</button>
     </td>
   </tr>
 </table>
-<form [formGroup]='cityForm' (ngSubmit)='addCity()'>
-  <label>
-    City Name:<br><input type="text" formControlName="city"><br>
-  </label>
-  <label>
-    Country ID:<br><input type="text" formControlName="fk_country_id"><br>
-  </label>
-  <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
-  <ng-template #show><button type="submit" [disabled]="!cityForm.valid">ADD</button></ng-template>
-  <ng-template #notShow><button (click)="updateCity()" [disabled]="!cityForm.valid">UPDATE</button></ng-template>
-</form>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addaddress()'>
+    <div Class="form-group">
+      <label>City Name:</label>
+      <input type="text" [(ngModel)]="name" name="city" class="form-control" required>
+      <label>Country ID:</label>
+      <input type="text" [(ngModel)]="fk_country_id" name="fk_country_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
+  </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateAddress()'>
+    <div Class="form-group">
+      <label>City Name:</label>
+      <input type="text" [(ngModel)]="name" name="city" class="form-control" required>
+      <label>Country ID:</label>
+      <input type="text" [(ngModel)]="fk_country_id" name="fk_country_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

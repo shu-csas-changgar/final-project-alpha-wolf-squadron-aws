@@ -1,57 +1,77 @@
 <app-root-navigation></app-root-navigation>
 <table class="Inventory-Table">
-    <thead>
-      <th>Invetory ID</th>
-      <th>Equipment ID</th>
-      <th>Employee ID</th>
-      <th>Room ID</th>
-      <th>Date Created</th>
-      <th>Last Updated</th>
-    </thead>
-    <tr tableCol *ngFor="let inventory of inventories">
-        <td>{{inventory.inventory_id}}</td>
-        <td>{{inventory.fk_equipment_id}}</td>
-        <td>
-          <ng-template *ngIf="inventory.fk_employee_id != null;then showInv; else notShowInv">
-          </ng-template>
-          <ng-template #showInv>
-            <p>
-              {{inventory.fk_employee_id}}
-            </p>
-          </ng-template>
-          <ng-template #notShowInv>
-            <p>
-              N/A
-            </p>
-          </ng-template>
-        </td>
-        <td>
-          <ng-template *ngIf="inventory.fk_room_id != null;then showRoom; else notShowRoom">
-          </ng-template>
-          <ng-template #showRoom>
-            <p>
-              {{inventory.fk_room_id}}
-            </p>
-          </ng-template>
-          <ng-template #notShowRoom>
-            <p>
-              N/A
-            </p>
-          </ng-template>
-        </td>
-        <td>{{inventory.date_created}}</td>
-        <td>{{inventory.last_update}}</td>
-      </tr>
-  </table>
-  <form [formGroup]='inventoryForm' (ngSubmit)='addInventory()'>
-    <label>
-      Equipment ID:<br><input type="text" formControlName="fk_equipment_id"><br>
-    </label>
-    <label>
-      Employee ID:<br><input type="text" formControlName="fk_employee_id"><br>
-    </label>
-    <label>
-      Room ID:<br><input type="text" formControlName="fk_room_id"><br>
-    </label>
-    <button type="submit" [disabled] ="!inventoryForm.valid">ADD</button>
+  <thead>
+    <th>Invetory ID</th>
+    <th>Equipment ID</th>
+    <th>Employee ID</th>
+    <th>Room ID</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Update/Delete</th>
+  </thead>
+  <tr tableCol *ngFor="let inventory of inventories">
+    <td>{{inventory.inventory_id}}</td>
+    <td>{{inventory.fk_equipment_id}}</td>
+    <td>
+      <ng-template *ngIf="inventory.fk_employee_id != null;then showInv; else notShowInv">
+      </ng-template>
+      <ng-template #showInv>
+        <p>
+          {{inventory.fk_employee_id}}
+        </p>
+      </ng-template>
+      <ng-template #notShowInv>
+        <p>
+          N/A
+        </p>
+      </ng-template>
+    </td>
+    <td>
+      <ng-template *ngIf="inventory.fk_room_id != null;then showRoom; else notShowRoom">
+      </ng-template>
+      <ng-template #showRoom>
+        <p>
+          {{inventory.fk_room_id}}
+        </p>
+      </ng-template>
+      <ng-template #notShowRoom>
+        <p>
+          N/A
+        </p>
+      </ng-template>
+    </td>
+    <td>{{inventory.date_created}}</td>
+    <td>{{inventory.last_update}}</td>
+    <td class= 'update-delete-btn'>
+      <button (click) ='updateFillIn(inventory)'>update</button>
+      <button (click) ='deleteInventory(inventory.inventory_id)'>delete</button>
+    </td>
+  </tr>
+</table>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addInventory()'>
+    <div Class="form-group">
+      <label>Equipment ID:</label>
+      <input type="text" [(ngModel)]="name" name="fk_equipment_id" class="form-control" required>
+      <label>Employee ID:</label>
+      <input type="text" [(ngModel)]="fk_employee_id" name="fk_employee_id" class="form-control" required>
+      <label>Room ID:</label>
+      <input type="text" [(ngModel)]="fk_room_id" name="fk_room_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateInventory()'>
+    <div Class="form-group">
+      <label>Equipment ID:</label>
+      <input type="text" [(ngModel)]="name" name="fk_equipment_id" class="form-control" required>
+      <label>Employee ID:</label>
+      <input type="text" [(ngModel)]="fk_employee_id" name="fk_employee_id" class="form-control" required>
+      <label>Room ID:</label>
+      <input type="text" [(ngModel)]="fk_room_id" name="fk_room_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

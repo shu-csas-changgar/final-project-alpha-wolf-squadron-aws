@@ -1,80 +1,99 @@
 <app-root-navigation></app-root-navigation>
 <table class="Equipment-Table">
-    <thead>
-      <th>Equipment ID</th>
-      <th>Name</th>
-      <th>Active</th>
-      <th>Warranty End Date</th>
-      <th>Lease ID</th>
-      <th>Vendor ID</th>
-      <th>Type ID</th>
-      <th>Date Created</th>
-      <th>Last Updated</th>
-      <th>Update/Delete</th>
-    </thead>
-    <tr tableCol *ngFor="let equipment of equipments">
-        <td>{{equipment.equipment_id}}</td>
-        <td>{{equipment.name}}</td>
-        <td>{{equipment.active}}</td>
-        <td>
-          <ng-template *ngIf="equipment.warranty_end_date != null;then showWarr; else notShowWarr">
-          </ng-template>
-          <ng-template #showWarr>
-            <p>
-              {{equipment.warranty_end_date}}
-            </p>
-          </ng-template>
-          <ng-template #notShowWarr>
-            <p>
-              N/A
-            </p>
-          </ng-template>
-        </td>
-        <td>
-          <ng-template *ngIf="equipment.fk_lease_id != null;then showLease; else notShowLease">
-          </ng-template>
-          <ng-template #showLease>
-            <p>
-              {{equipment.fk_lease_id}}
-            </p>
-          </ng-template>
-          <ng-template #notShowLease>
-            <p>
-              N/A
-            </p>
-          </ng-template>
-        </td>
-        <td>{{equipment.fk_vendor_id}}</td>
-        <td>{{equipment.fk_type_id}}</td>
-        <td>{{equipment.date_created}}</td>
-        <td>{{equipment.last_update}}</td>
-        <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
-        </td>
-      </tr>
-  </table>
-  <form [formGroup]='equipmentForm' (ngSubmit)='addEquipment()'>
-    <label>
-      Equipment Name:<input type="text" formControlName="name">
-    </label>
-    <label>
-      Active?:<input type="text" formControlName="active">
-    </label>
-    <label>
-      Warranty End Date:<input type="text" formControlName="warranty_end_date">
-    </label>
-    <label>
-      Lease ID:<input type="text" formControlName="fk_lease_id">
-    </label>
-    <label>
-      Vendor ID:<input type="text" formControlName="fk_vendor_id">
-    </label>
-    <label>
-      Type ID:<input type="text" formControlName="fk_type_id">
-    </label>
-    <label>
-      Address ID:<input type="text" formControlName="fk_address_id">
-    </label>
-    <button type="submit" [disabled] ="!equipmentForm.valid">ADD</button>
+  <thead>
+    <th>Equipment ID</th>
+    <th>Name</th>
+    <th>Active</th>
+    <th>Warranty End Date</th>
+    <th>Lease ID</th>
+    <th>Vendor ID</th>
+    <th>Type ID</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Update/Delete</th>
+  </thead>
+  <tr tableCol *ngFor="let equipment of equipments">
+    <td>{{equipment.equipment_id}}</td>
+    <td>{{equipment.name}}</td>
+    <td>{{equipment.active}}</td>
+    <td>
+      <ng-template *ngIf="equipment.warranty_end_date != null;then showWarr; else notShowWarr">
+      </ng-template>
+      <ng-template #showWarr>
+        <p>
+          {{equipment.warranty_end_date}}
+        </p>
+      </ng-template>
+      <ng-template #notShowWarr>
+        <p>
+          N/A
+        </p>
+      </ng-template>
+    </td>
+    <td>
+      <ng-template *ngIf="equipment.fk_lease_id != null;then showLease; else notShowLease">
+      </ng-template>
+      <ng-template #showLease>
+        <p>
+          {{equipment.fk_lease_id}}
+        </p>
+      </ng-template>
+      <ng-template #notShowLease>
+        <p>
+          N/A
+        </p>
+      </ng-template>
+    </td>
+    <td>{{equipment.fk_vendor_id}}</td>
+    <td>{{equipment.fk_type_id}}</td>
+    <td>{{equipment.date_created}}</td>
+    <td>{{equipment.last_update}}</td>
+    <td class='update-delete-btn'>
+      <button (click)='updateFillIn(equipment)'>update</button>
+      <button (click)='deleteEquipment(equipment.equipment_id)'>delete</button>
+    </td>
+  </tr>
+</table>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addEquipment()'>
+    <div Class="form-group">
+      <label>Equipment Name:</label>
+      <input type="text" [(ngModel)]="name" name="equipment" class="form-control" required>
+      <label>Active?:</label>
+      <input type="text" [(ngModel)]="active" name="active" class="form-control" required>
+      <label>Warranty End Date:</label>
+      <input type="text" [(ngModel)]="warranty_end_date" name="warranty_end_date" class="form-control" required>
+      <label>Lease ID:</label>
+      <input type="text" [(ngModel)]="fk_lease_id" name="fk_lease_id" class="form-control" required>
+      <label>Vendor ID:</label>
+      <input type="text" [(ngModel)]="fk_vendor_id" name="fk_vendor_id" class="form-control" required>
+      <label>Type ID:</label>
+      <input type="text" [(ngModel)]="fk_type_id" name="fk_type_id" class="form-control" required>
+      <label>Equipmnet ID:</label>
+      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateEquipment()'>
+    <div Class="form-group">
+      <label>Equipment Name:</label>
+      <input type="text" [(ngModel)]="name" name="equipment" class="form-control" required>
+      <label>Active?:</label>
+      <input type="text" [(ngModel)]="active" name="active" class="form-control" required>
+      <label>Warranty End Date:</label>
+      <input type="text" [(ngModel)]="warranty_end_date" name="warranty_end_date" class="form-control" required>
+      <label>Lease ID:</label>
+      <input type="text" [(ngModel)]="fk_lease_id" name="fk_lease_id" class="form-control" required>
+      <label>Vendor ID:</label>
+      <input type="text" [(ngModel)]="fk_vendor_id" name="fk_vendor_id" class="form-control" required>
+      <label>Type ID:</label>
+      <input type="text" [(ngModel)]="fk_type_id" name="fk_type_id" class="form-control" required>
+      <label>Equipmnet ID:</label>
+      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

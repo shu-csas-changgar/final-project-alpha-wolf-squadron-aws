@@ -1,41 +1,57 @@
 <app-root-navigation></app-root-navigation>
 <table class="Office-Table">
-    <thead>
-      <th>Office ID</th>
-      <th>Office Name</th>
-      <th>Phone Number</th>
-      <th>Equipment Contact</th>
-      <th>Address ID</th>
-      <th>Date Created</th>
-      <th>Last Updated</th>
-      <th>Update/Delete</th>
-    </thead>
-    <tr tableCol *ngFor="let office of offices">
-        <td>{{office.office_id}}</td>
-        <td>{{office.office}}</td>
-        <td>{{office.phone_number}}</td>
-        <td>{{office.equipment_contact}}</td>
-        <td>{{office.fk_address_id}}</td>
-        <td>{{office.date_created}}</td>
-        <td>{{office.last_update}}</td>
-        <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
-        </td>
-      </tr>
-  </table>
-  <form [formGroup]='officeForm' (ngSubmit)='addOffice()'>
-    <label>
-      Office Name:<br><input type="text" formControlName="office"><br>
-    </label>
-    <label>
-      Office Phone Number:<br><input type="text" formControlName="phone_number"><br>
-    </label>
-    <label>
-      Equipment_Contact:<br><input type="text" formControlName="equipment_contact"><br>
-    </label>
-    <label>
-      Address ID:<br><input type="text" formControlName="fk_address_id"><br>
-    </label>
-    <button type="submit" [disabled] ="!officeForm.valid">ADD</button>
+  <thead>
+    <th>Office ID</th>
+    <th>Office Name</th>
+    <th>Phone Number</th>
+    <th>Equipment Contact</th>
+    <th>Address ID</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Update/Delete</th>
+  </thead>
+  <tr tableCol *ngFor="let office of offices">
+    <td>{{office.office_id}}</td>
+    <td>{{office.office}}</td>
+    <td>{{office.phone_number}}</td>
+    <td>{{office.equipment_contact}}</td>
+    <td>{{office.fk_address_id}}</td>
+    <td>{{office.date_created}}</td>
+    <td>{{office.last_update}}</td>
+    <td class= 'update-delete-btn'>
+      <button (click) ='updateFillIn(office)'>update</button>
+      <button (click) ='deleteOffice(office.office_id)'>delete</button>
+    </td>
+  </tr>
+</table>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addOffice()'>
+    <div Class="form-group">
+      <label>Office Name:</label>
+      <input type="text" [(ngModel)]="name" name="office" class="form-control" required>
+      <label>Office Phone Number:</label>
+      <input type="text" [(ngModel)]="phone_number" name="phone_number" class="form-control" required>
+      <label>Equipment Contact:</label>
+      <input type="text" [(ngModel)]="equipment_contact" name="equipment_contact" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateOffice()'>
+    <div Class="form-group">
+      <label>Office Name:</label>
+      <input type="text" [(ngModel)]="name" name="office" class="form-control" required>
+      <label>Office Phone Number:</label>
+      <input type="text" [(ngModel)]="phone_number" name="phone_number" class="form-control" required>
+      <label>Equipment Contact:</label>
+      <input type="text" [(ngModel)]="equipment_contact" name="equipment_contact" class="form-control" required>
+      <label>Address ID:</label>
+      <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>

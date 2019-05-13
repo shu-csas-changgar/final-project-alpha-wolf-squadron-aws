@@ -1,36 +1,51 @@
 <app-root-navigation></app-root-navigation>
 <table class="Room-Table">
-    <thead>
-      <th>Room ID</th>
-      <th>Room Name</th>
-      <th>Floor</th>
-      <th>Office ID</th>
-      <th>Date Created</th>
-      <th>Last Updated</th>
-      <th>Update/Delete</th>
-    </thead>
-    <tr tableCol *ngFor="let room of rooms">
-        <td>{{room.room_id}}</td>
-        <td>{{room.room}}</td>
-        <td>{{room.floor}}</td>
-        <td>{{room.fk_office_id}}</td>
-        <td>{{room.date_created}}</td>
-        <td>{{room.last_update}}</td>
-        <td class= 'update-delete-btn'>
-          <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-          <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
-        </td>
-      </tr>
-  </table>
-  <form [formGroup]='roomForm' (ngSubmit)='addRoom()'>
-    <label>
-      Room Name:<br><input type="text" formControlName="room"><br>
-    </label>
-    <label>
-      Floor Number:<br><input type="text" formControlName="floor"><br>
-    </label>
-    <label>
-      Office ID:<br><input type="text" formControlName="fk_office_id"><br>
-    </label>
-    <button type="submit" [disabled] ="!roomForm.valid">ADD</button>
+  <thead>
+    <th>Room ID</th>
+    <th>Room Name</th>
+    <th>Floor</th>
+    <th>Office ID</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Update/Delete</th>
+  </thead>
+  <tr tableCol *ngFor="let room of rooms">
+    <td>{{room.room_id}}</td>
+    <td>{{room.room}}</td>
+    <td>{{room.floor}}</td>
+    <td>{{room.fk_office_id}}</td>
+    <td>{{room.date_created}}</td>
+    <td>{{room.last_update}}</td>
+    <td class= 'update-delete-btn'>
+      <button (click) ='updateFillIn(room)'>update</button>
+      <button (click) ='deleteRoom(room.room_id)'>delete</button>
+    </td>
+  </tr>
+</table>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addRoom()'>
+    <div Class="form-group">
+      <label>Room Name:</label>
+      <input type="text" [(ngModel)]="name" name="room" class="form-control" required>
+      <label>Floor Number:</label>
+      <input type="text" [(ngModel)]="floor" name="floor" class="form-control" required>
+      <label>Office ID:</label>
+      <input type="text" [(ngModel)]="fk_office_id" name="fk_office_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
   </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateRoom()'>
+    <div Class="form-group">
+      <label>Room Name:</label>
+      <input type="text" [(ngModel)]="name" name="room" class="form-control" required>
+      <label>Floor Number:</label>
+      <input type="text" [(ngModel)]="floor" name="floor" class="form-control" required>
+      <label>Office ID:</label>
+      <input type="text" [(ngModel)]="fk_office_id" name="fk_office_id" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>
