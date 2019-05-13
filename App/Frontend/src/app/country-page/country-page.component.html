@@ -18,12 +18,22 @@
     </td>
   </tr>
 </table>
-<form (submit) = 'addCountry()'>
-  <div Class = "form-group">
-    <label>Country Name</label>
-    <input type = "text" [(ngModel)] = "name" name = "country" class = "form-control" required>
-  </div>
-    <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
-    <ng-template #show><input type = "submit" class = "btn btn btn-success" value = "Add"></ng-template>
-    <ng-template #notShow><button class = 'updateButton' (click)="updateCountry()" [disabled]="!countryForm.valid">UPDATE</button></ng-template>
-</form>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+<ng-template #show>
+  <form (submit)='addCountry()'>
+    <div Class="form-group">
+      <label>Country Name</label>
+      <input type="text" [(ngModel)]="name" name="country" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="Add">
+  </form>
+</ng-template>
+<ng-template #notShow>
+  <form (submit)='updateCountry()'>
+    <div Class="form-group">
+      <label>Country Name</label>
+      <input type="text" [(ngModel)]="name" name="country" class="form-control" required>
+    </div>
+    <input type="submit" class="btn btn btn-success" value="UPDATE">
+  </form>
+</ng-template>
