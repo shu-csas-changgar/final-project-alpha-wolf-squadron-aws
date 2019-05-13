@@ -15,12 +15,22 @@ export class OfficeService {
   constructor(private http: Http) { }
 
   getOffice() {
-    return this.http.get(`${this.uri}/readAllOffices`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addOffice(newOffice) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createOffice`, newOffice, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateOffice(theOffice) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateOffice/${theOffice.office_id}`, theOffice, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteOffice(id){
+    return this.http.delete(`${this.uri}/deleteOffice/${id}`)
   }
 }

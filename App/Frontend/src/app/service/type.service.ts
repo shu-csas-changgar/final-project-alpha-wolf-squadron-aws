@@ -14,12 +14,22 @@ export class TypeService {
   constructor(private http: Http) { }
 
   getType() {
-    return this.http.get(`${this.uri}/readAllTypes`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addType(newType) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createType`, newType, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateType(theType) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateType/${theType.type_id}`, theType, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteType(id){
+    return this.http.delete(`${this.uri}/deleteType/${id}`)
   }
 }

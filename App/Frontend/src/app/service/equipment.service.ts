@@ -15,12 +15,22 @@ export class EquipmentService {
   constructor(private http: Http) { }
 
   getEquipment() {
-    return this.http.get(`${this.uri}/readAllEquipment`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addEquipment(newEquipment) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createEquipment`, newEquipment, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateEquipment(theEquipment) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateEquipment/${theEquipment.equipment_id}`, theEquipment, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteEquipment(id){
+    return this.http.delete(`${this.uri}/deleteEquipment/${id}`)
   }
 }

@@ -15,12 +15,22 @@ export class LeaseService {
   constructor(private http: Http) { }
 
   getLease() {
-    return this.http.get(`${this.uri}/readAllLeases`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
-  
+
   addLease(newLease) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createLease`, newLease, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateLease(theLease) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateLease/${theLease.lease_id}`, theLease, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteLease(id){
+    return this.http.delete(`${this.uri}/deleteLease/${id}`)
   }
 }

@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
+  toggleUpdateButton:boolean = false;
   countries: Country[] = [];
   country: Country;
   name: String;
@@ -35,29 +36,36 @@ export class CountryPageComponent implements OnInit {
     });
 }
 updateCountry() {
+  var countries = this.countries;
   const newCountry = {
     country: this.name
-}
-  this.countryService.updateCountry(newCountry).subscribe();
-  this.countryService
-  .getCountry()
-  .subscribe(countries => this.countries = countries);
+  }
+  this.countryService.updateCountry(newCountry).subscribe(country => {
+    for(var i = 0; i < countries.length; i++ ){
+      if (countries[i].country_id == country.country_id){
+        countries[i] = country;
+      }
+    }
+  });
 
 }
-   deleteCountry(id: any) {
-     var countries = this.countries;
-    this.countryService.deleteCountry(id).subscribe(data =>{
-      for(var i = 0; i < countries.length; i++){
-        if(countries[i].country_id == id){
-          countries.splice(i, 1);
-        }
+  deleteCountry(id: any) {
+    var countries = this.countries;
+  this.countryService.deleteCountry(id).subscribe(data =>{
+    for(var i = 0; i < countries.length; i++){
+      if(countries[i].country_id == id){
+        countries.splice(i, 1);
       }
+    }
   });
   }
 
-  
+
   updateFillIn(country: Country){
     this.name = country.country;
   }
 
+  toggleUpdateAdd(){
+    this.toggleUpdateButton = !this.toggleUpdateButton
+  }
 }

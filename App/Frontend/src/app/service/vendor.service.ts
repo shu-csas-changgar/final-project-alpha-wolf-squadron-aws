@@ -15,12 +15,22 @@ export class VendorService {
   constructor(private http: Http) { }
 
   getVendor() {
-    return this.http.get(`${this.uri}/readAllVendors`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addVendor(newVendor) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createVendor`, newVendor, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateVendor(theVendor) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateVendor/${theVendor.vendor_id}`, theVendor, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteVendor(id){
+    return this.http.delete(`${this.uri}/deleteVendor/${id}`)
   }
 }
