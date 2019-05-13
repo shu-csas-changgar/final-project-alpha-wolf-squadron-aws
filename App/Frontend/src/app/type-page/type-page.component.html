@@ -18,8 +18,9 @@
     </td>
   </tr>
 </table>
+<ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
 <ng-template #show>
-  <form (submit)='addRoom()'>
+  <form (submit)='addType()'>
     <div Class="form-group">
       <label>Type Name:</label>
       <input type="text" [(ngModel)]="name" name="type" class="form-control" required>
@@ -28,7 +29,7 @@
   </form>
 </ng-template>
 <ng-template #notShow>
-  <form (submit)='updateRoom()'>
+  <form (submit)='updateType()'>
     <div Class="form-group">
       <label>Type Name:</label>
       <input type="text" [(ngModel)]="name" name="type" class="form-control" required>
