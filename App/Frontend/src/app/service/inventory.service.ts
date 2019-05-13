@@ -15,7 +15,7 @@ export class InventoryService {
   constructor(private http: Http) { }
 
   getInventory() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllInventories`).pipe(map(res => res.json()));
   }
 
   addInventory(newInventory) {

@@ -20,6 +20,7 @@ export class EmployeePageComponent implements OnInit {
   email: String;
   username: String;
   password: String;
+  active: any;
   fk_address_id: any;
   fk_room_id: any;
   toggleUpdateButton:boolean = false;
@@ -42,6 +43,7 @@ export class EmployeePageComponent implements OnInit {
       email: this.email,
       username: this.username,
       password: this.password,
+      active: this.active,
       fk_address_id: this.fk_address_id,
       fk_room_id: this.fk_room_id
     }
@@ -62,6 +64,7 @@ updateEmployee() {
       email: this.email,
       username: this.username,
       password: this.password,
+      active: this.active,
       fk_address_id: this.fk_address_id,
       fk_room_id: this.fk_room_id
   }
@@ -99,6 +102,7 @@ updateFillIn(employee: Employee){
   this.work_phone_number = employee.work_phone_number,
   this.email = employee.email,
   this.username = employee.username,
+  this.active = employee.active,
   this.fk_address_id = employee.fk_address_id,
   this.fk_room_id = employee.fk_room_id
   this.id = employee.employee_id;
