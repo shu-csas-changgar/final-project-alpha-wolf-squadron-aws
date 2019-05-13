@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
+  toggleUpdateButton:boolean = false;
   countries: Country[] = [];
   countryForm = new FormGroup({
     country : new FormControl('')
@@ -40,6 +41,10 @@ export class CountryPageComponent implements OnInit {
     this.countryService.deleteCountry(id).subscribe();
     this.fetchCountry();
 
+  }
+
+  toggleUpdateAdd(){
+    this.toggleUpdateButton = !this.toggleUpdateButton
   }
 
 
