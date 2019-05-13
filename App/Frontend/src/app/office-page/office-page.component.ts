@@ -31,6 +31,9 @@ export class OfficePageComponent implements OnInit {
   addOffice() {
     const newOffice = {
       office: this.name,
+      phone_number: this.phone_number,
+      equipment_contact: this.equipment_contact,
+      fk_address_id: this.fk_address_id
 
     }
     this.OfficeService.addOffice(newOffice).subscribe(office => {
@@ -43,7 +46,10 @@ export class OfficePageComponent implements OnInit {
   updateOffice() {
     var offices = this.offices;
     const newOffice = {
-      office: this.name
+      office: this.name,
+      phone_number: this.phone_number,
+      equipment_contact: this.equipment_contact,
+      fk_address_id: this.fk_address_id
     }
     const data = {
       officeChange: newOffice,

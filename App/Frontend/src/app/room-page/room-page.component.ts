@@ -28,7 +28,9 @@ export class RoomPageComponent implements OnInit {
 
   addRoom() {
     const newRoom = {
-        room: this.name
+      room: this.name,
+      floor: this.floor,
+      fk_office_id: this.fk_office_id
     }
     this.RoomService.addRoom(newRoom).subscribe(room => {
       this.rooms.push(room);
@@ -40,7 +42,9 @@ export class RoomPageComponent implements OnInit {
 updateRoom() {
   var rooms = this.rooms;
   const newRoom = {
-    room: this.name
+    room: this.name,
+      floor: this.floor,
+      fk_office_id: this.fk_office_id
   }
   const data = {
     roomChange: newRoom,
