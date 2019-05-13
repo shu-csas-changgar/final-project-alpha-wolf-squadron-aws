@@ -12,28 +12,28 @@
         <td>{{inventory.inventory_id}}</td>
         <td>{{inventory.fk_equipment_id}}</td>
         <td>
-          <ng-template *ngIf="inventory.fk_employee_id != null;then show; else notShow">
+          <ng-template *ngIf="inventory.fk_employee_id != null;then showInv; else notShowInv">
           </ng-template>
-          <ng-template #show>
+          <ng-template #showInv>
             <p>
               {{inventory.fk_employee_id}}
             </p>
           </ng-template>
-          <ng-template #notShow>
+          <ng-template #notShowInv>
             <p>
               N/A
             </p>
           </ng-template>
         </td>
         <td>
-          <ng-template *ngIf="inventory.fk_room_id != null;then show; else notShow">
+          <ng-template *ngIf="inventory.fk_room_id != null;then showRoom; else notShowRoom">
           </ng-template>
-          <ng-template #show>
+          <ng-template #showRoom>
             <p>
               {{inventory.fk_room_id}}
             </p>
           </ng-template>
-          <ng-template #notShow>
+          <ng-template #notShowRoom>
             <p>
               N/A
             </p>

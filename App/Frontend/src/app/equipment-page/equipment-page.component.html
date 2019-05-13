@@ -17,28 +17,28 @@
         <td>{{equipment.name}}</td>
         <td>{{equipment.active}}</td>
         <td>
-          <ng-template *ngIf="equipment.warranty_end_date != null;then show; else notShow">
+          <ng-template *ngIf="equipment.warranty_end_date != null;then showWarr; else notShowWarr">
           </ng-template>
-          <ng-template #show>
+          <ng-template #showWarr>
             <p>
               {{equipment.warranty_end_date}}
             </p>
           </ng-template>
-          <ng-template #notShow>
+          <ng-template #notShowWarr>
             <p>
               N/A
             </p>
           </ng-template>
         </td>
         <td>
-          <ng-template *ngIf="equipment.fk_lease_id != null;then show; else notShow">
+          <ng-template *ngIf="equipment.fk_lease_id != null;then showLease; else notShowLease">
           </ng-template>
-          <ng-template #show>
+          <ng-template #showLease>
             <p>
               {{equipment.fk_lease_id}}
             </p>
           </ng-template>
-          <ng-template #notShow>
+          <ng-template #notShowLease>
             <p>
               N/A
             </p>

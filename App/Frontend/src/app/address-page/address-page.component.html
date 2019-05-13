@@ -14,17 +14,17 @@
     <td>{{address.address_id}}</td>
     <td>{{address.address}}</td>
     <td> 
-      <ng-template *ngIf="address.address2 != null;then show; else notShow">
+      <ng-template *ngIf="address.address2 != null;then showAdd; else notShowAdd">
       </ng-template>
-      <ng-template #show><p>{{address.address2}}</p></ng-template>
-      <ng-template #notShow><p>N/A</p></ng-template>
+      <ng-template #showAdd><p>{{address.address2}}</p></ng-template>
+      <ng-template #notShowAdd><p>N/A</p></ng-template>
     </td>
     <td>{{address.district}}</td>
     <td>
-      <ng-template *ngIf="address.postal_code != null;then show; else notShow">
+      <ng-template *ngIf="address.postal_code != null;then showPC; else notShowPC">
       </ng-template>
-      <ng-template #show><p>{{address.postal_code}}</p></ng-template>
-      <ng-template #notShow>
+      <ng-template #showPC><p>{{address.postal_code}}</p></ng-template>
+      <ng-template #notShowPC>
         <p>
           N/A
         </p>

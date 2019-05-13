@@ -20,21 +20,21 @@
     <td>{{view.type}}</td>
     <td>{{view.active}}</td>
     <td>
-      <ng-template *ngIf="view.fk_lease_id != null;then show; else notShow"></ng-template>
-      <ng-template #show>
+      <ng-template *ngIf="view.fk_lease_id != null;then showLease; else notShowLease"></ng-template>
+      <ng-template #showLease>
         {{view.fk_lease_id}}
       </ng-template>
-      <ng-template #notShow>
+      <ng-template #notShowLease>
         <p>N/A</p>
       </ng-template>
     </td>
     <td>{{view.vendor}}</td>
     <td>
-      <ng-template *ngIf="view.fk_employee_id != null;then show; else notShow"></ng-template>
-      <ng-template #show>
+      <ng-template *ngIf="view.fk_employee_id != null;then showEmployee; else notShowEmployee"></ng-template>      
+      <ng-template #showEmployee>
         {{view.fk_employee_id}}
       </ng-template>
-      <ng-template #notShow>
+      <ng-template #notShowEmployee>
         <p>N/A</p>
       </ng-template>
     </td>
