@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class TypePageComponent implements OnInit {
 
-  Types: Type[] = []
+  types: Type[] = []
   typeForm = new FormGroup({
     name: new FormControl
   })
@@ -25,7 +25,7 @@ export class TypePageComponent implements OnInit {
     this.TypeService
     .getType()
     .subscribe((data: Type[]) => {
-      this.Types = data;
+      this.types = data;
     });
   }
 

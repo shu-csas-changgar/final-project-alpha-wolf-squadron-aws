@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LeasePageComponent implements OnInit {
 
-  Leases: Lease[] = []
+  leases: Lease[] = []
   leaseForm = new FormGroup({
     star_date: new FormControl,
     end_date : new FormControl
@@ -26,7 +26,7 @@ export class LeasePageComponent implements OnInit {
     this.LeaseService
     .getLease()
     .subscribe((data: Lease[]) => {
-      this.Leases = data;
+      this.leases = data;
     });
   }
   

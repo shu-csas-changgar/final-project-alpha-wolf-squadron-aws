@@ -20,7 +20,7 @@
   </table>
 <form [formGroup]='typeForm' (ngSubmit)='addType()'>
     <label>
-      Type Name:<input type="text" formControlName="name">
+      Type Name:<br><input type="text" formControlName="name"><br>
     </label>
     <button type="submit" [disabled] ="!typeForm.valid">ADD</button>
   </form>

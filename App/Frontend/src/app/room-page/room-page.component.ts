@@ -11,11 +11,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RoomPageComponent implements OnInit {
 
-  Rooms: Room[] = []
+  rooms: Room[] = []
   roomForm = new FormGroup({
     name: new FormControl,
     floor: new FormControl,
-    office_id: new FormControl
+    fk_office_id: new FormControl
   })
   constructor(private RoomService: RoomService) { }
 
@@ -27,7 +27,7 @@ export class RoomPageComponent implements OnInit {
     this.RoomService
     .getRoom()
     .subscribe((data: Room[]) => {
-      this.Rooms = data;
+      this.rooms = data;
     });
   }
 

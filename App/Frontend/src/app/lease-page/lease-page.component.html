@@ -22,10 +22,10 @@
   </table>
   <form [formGroup]='leaseForm' (ngSubmit)='addLease()'>
     <label>
-      Lease Start Date:<input type="text" formControlName="start_date">
+      Lease Start Date:<br><input type="text" formControlName="start_date"><br>
     </label>
     <label>
-      Lease End Date:<input type="text" formControlName="end_date">
+      Lease End Date:<br><input type="text" formControlName="end_date"><br>
     </label>
     <button type="submit" [disabled] ="!leaseForm.valid">ADD</button>
   </form>

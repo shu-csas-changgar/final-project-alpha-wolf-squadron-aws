@@ -14,18 +14,18 @@
     <td>{{city.fk_country_id}}</td>
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
-    <td class= 'update-delete-btn'>
-      <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-      <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+    <td class='update-delete-btn'>
+      <button type ="button" (click)='updateSubmit(city)'>update</button>
+      <button type="button" (click)='deleteSubmit(city)'>delete</button>
     </td>
   </tr>
 </table>
 <form [formGroup]='cityForm' (ngSubmit)='addCity()'>
   <label>
-    City Name:<input type="text" formControlName="city">
+    City Name:<br><input type="text" formControlName="city"><br>
   </label>
   <label>
-    Country ID:<input type="text" formControlName="country_id">
+    Country ID:<br><input type="text" formControlName="country_id"><br>
   </label>
   <button type="submit" [disabled] ="!cityForm.valid">ADD</button>
 </form>

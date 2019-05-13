@@ -11,12 +11,12 @@ import { FormControl } from '@angular/forms';
 })
 export class OfficePageComponent implements OnInit {
 
-  Offices: Office[] = []
+  offices: Office[] = []
   officeForm = new FormControl({
     name : new FormControl,
     phone_number : new FormControl,
     equipment_contact : new FormControl,
-    address_id : new FormControl
+    fk_address_id : new FormControl
   })
   constructor(private OfficeService: OfficeService) { }
 
@@ -28,7 +28,7 @@ export class OfficePageComponent implements OnInit {
     this.OfficeService
     .getOffice()
     .subscribe((data: Office[]) => {
-      this.Offices = data;
+      this.offices = data;
     });
   }
 

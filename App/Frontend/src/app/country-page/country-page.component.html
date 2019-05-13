@@ -13,12 +13,12 @@
     <td>{{country.date_created}}</td>
     <td>{{country.last_update}}</td>
     <td class= 'update-delete-btn'>
-      <button type="submit" (ngSubmit)='updateSubmit()'>update</button>
-      <button type="submit" (ngSubmit)='deleteSubmit()'>delete</button>
+      <button (click) ='updateSubmit(country)'>update</button>
+      <button (click) ='deleteCountry(country.country_id)'>delete</button>
     </td>
   </tr>
 </table>
-<form [formGroup]= 'countryForm' (ngSubmit)='addCountry()'>
-  <label>Country Name: <input type ="text" formControlName ='country'></label>
-  <button type="submit" [disabled] ="!countryForm.valid">ADD</button>
+<form [formGroup]= 'countryForm' (click)='addCountry()'>
+  <label>Country Name: <br><input type ="text" formControlName ='country'></label><br>
+  <button type="click" [disabled] ="!countryForm.valid">ADD</button>
 </form>

@@ -36,28 +36,28 @@
   </table>
   <form [formGroup]='employeeForm' (ngSubmit)='addEmployee()'>
     <label>
-      First Name:<input type="text" formControlName="firts_name">
+      First Name:<br><input type="text" formControlName="firts_name"><br>
     </label>
     <label>
-      Last Name:<input type="text" formControlName="last_name">
+      Last Name:<br><input type="text" formControlName="last_name"><br>
     </label>
     <label>
-      Phone Number:<input type="text" formControlName="phone_number">
+      Phone Number:<br><input type="text" formControlName="phone_number"><br>
     </label>
     <label>
-      Work Phone Number:<input type="text" formControlName="work_number">
+      Work Phone Number:<br><input type="text" formControlName="work_number"><br>
     </label>
     <label>
-      Email:<input type="text" formControlName="email">
+      Email:<br><input type="text" formControlName="email"><br>
     </label>
     <label>
-      Username:<input type="text" formControlName="username">
+      Username:<br><input type="text" formControlName="username"><br>
     </label>
     <label>
-      Address ID:<input type="text" formControlName="address_id">
+      Address ID:<br><input type="text" formControlName="address_id"><br>
     </label>
     <label>
-      Room ID:<input type="text" formControlName="room_id">
+      Room ID:<br><input type="text" formControlName="room_id"><br>
     </label>
     <button type="submit" [disabled] ="!employeeForm.valid">ADD</button>
   </form>

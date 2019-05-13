@@ -10,9 +10,14 @@ country.post('/createCountry', (req, res)=>{
         "country": req.body.country
     };
     let query = db.query(sql, newCountry, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -20,9 +25,14 @@ country.post('/createCountry', (req, res)=>{
 country.get('/readAllCountries', (req, res)=>{
             let sql = 'SELECT * From country'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -30,9 +40,14 @@ country.get('/readAllCountries', (req, res)=>{
 country.get('/readCountry/:id', (req, res)=>{
     let sql = 'SELECT * From country where country_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -43,9 +58,14 @@ country.put('/updateCountry/:id', (req, res)=>{
     };
     let sql = 'UPDATE country Set ? WHERE country_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newCountry, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -54,9 +74,10 @@ country.put('/updateCountry/:id', (req, res)=>{
 country.delete('/deleteCountry/:id', (req, res) => {
     let sql = 'DELETE FROM country WHERE country_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 

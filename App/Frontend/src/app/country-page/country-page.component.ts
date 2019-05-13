@@ -11,42 +11,36 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
-  countries: Country[] = []
+  countries: Country[] = [];
   countryForm = new FormGroup({
     country : new FormControl('')
-  })
+  });
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
-    this.countryService.getCountry().subscribe(countries => this.countries = countries);
+    this.fetchCountry();
+  }
+
+  fetchCountry() {
+    this.countryService
+    .getCountry()
+    .subscribe((data: Country[]) => {
+      this.countries = data;
+    });
   }
 
   addCountry() {
-    var jsonFormat = JSON.stringify(this.countryForm.getRawValue());
-    this.countryService.addCountry(jsonFormat).subscribe(country => {
-      this.countries.push(country);
-    }
-    );
-    console.log(jsonFormat);
-  }
-
-  createSubmit(){
-    console.log(this.countryForm.value);
+    this.countryService.addCountry(this.countryForm.value).subscribe();
+    this.fetchCountry();
 
   }
-/*
-  deleteCountry(id:any) {
-    var countries = this.countries;
-    this.countryService.deleteCountry(id).subscribe(data => {
-      if(data.n==1)
-      {
-        for(var i = 0; i< this.countries.length; i++){
-          if(countries[i].country_id == id){
-            countries.splice(i,1);
-          }
-        }
-      }
-    })
-  }*/
+
+
+   deleteCountry(id: any) {
+    this.countryService.deleteCountry(id).subscribe();
+    this.fetchCountry();
+
+  }
+
 
 }

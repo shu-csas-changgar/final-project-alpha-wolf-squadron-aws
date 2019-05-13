@@ -10,7 +10,7 @@
     </thead>
     <tr tableCol *ngFor="let inventory of inventories">
         <td>{{inventory.inventory_id}}</td>
-        <td>{{inventory.fk.equipment_id}}</td>
+        <td>{{inventory.fk_equipment_id}}</td>
         <td>
           <ng-template *ngIf="inventory.fk_employee_id != null;then show; else notShow">
           </ng-template>
@@ -45,13 +45,13 @@
   </table>
   <form [formGroup]='inventoryForm' (ngSubmit)='addInventory()'>
     <label>
-      Equipment ID:<input type="text" formControlName="equipment_id">
+      Equipment ID:<br><input type="text" formControlName="equipment_id"><br>
     </label>
     <label>
-      Employee ID:<input type="text" formControlName="employee_id">
+      Employee ID:<br><input type="text" formControlName="employee_id"><br>
     </label>
     <label>
-      Room ID:<input type="text" formControlName="room_id">
+      Room ID:<br><input type="text" formControlName="room_id"><br>
     </label>
     <button type="submit" [disabled] ="!inventoryForm.valid">ADD</button>
   </form>

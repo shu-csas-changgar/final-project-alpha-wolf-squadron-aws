@@ -19,9 +19,14 @@ employee.post('/createEmployee', (req, res)=>{
         "fk_room_id": req.body.fk_room_id
     };
     let query = db.query(sql, newEmployee, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry not added"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -29,9 +34,14 @@ employee.post('/createEmployee', (req, res)=>{
 employee.get('/readAllEmployees', (req, res)=>{
             let sql = 'SELECT * From employee'
             db.query(sql, (err, results) =>{
-                if(err) throw err;
-                console.log(results);
-                res.json(results);
+                if(err){
+                    res.json({msg: "Error: Entry could not be read"});
+                    console.log(err)
+                }
+                else{
+                    console.log(results);
+                    res.json(results);
+                }
             });
         });
 
@@ -39,9 +49,14 @@ employee.get('/readAllEmployees', (req, res)=>{
 employee.get('/readEmployee/:id', (req, res)=>{
     let sql = 'SELECT * From employee where employee_id = ' + db.escape(req.params.id);
     db.query(sql, (err, results) =>{
-        if(err) throw err;
-        console.log(results);
-        res.json(results);
+        if(err){
+            res.json({msg: "Error: Entry could not be read"});
+            console.log(err)
+        }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 
@@ -61,9 +76,14 @@ employee.put('/updateEmployee/:id', (req, res)=>{
     };
     let sql = 'UPDATE employee Set ? WHERE employee_id = ' + db.escape(req.params.id);
     let query = db.query(sql, newEmployee, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send("it worked");
+        if(err){
+            res.json({msg: "Error: Entry could not be updated"});
+            console.log(err)
+        }
+        else{
+            console.log(result);
+            res.json(result);
+        }
     });
 });
 
@@ -72,9 +92,10 @@ employee.put('/updateEmployee/:id', (req, res)=>{
 employee.delete('/deleteEmployee/:id', (req, res) => {
     let sql = 'DELETE FROM employee WHERE employee_id = ' + db.escape(req.params.id);
     let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send("It worked!");
+        if(err){
+            res.json({msg: "Error: Entry could not be deleted"});
+            console.log(err)
+        }
     });
 });
 
