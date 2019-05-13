@@ -24,12 +24,11 @@ export class OfficeService {
     return this.http.post(`${this.uri}/createOffice`, newOffice, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateOffice(theOffice) {
+  updateOffice(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateOffice/${theOffice.office_id}`, theOffice, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateOffice/${data.idSearch}`, data.officeChange, {headers: headers}).pipe(map(res => res.json()));
   }
-
   deleteOffice(id){
     return this.http.delete(`${this.uri}/deleteOffice/${id}`)
   }

@@ -80,6 +80,10 @@ lease.delete('/deleteLease/:id', (req, res) => {
             res.json({msg: "Error: Entry could not be deleted"});
             console.log(err)
         }
+        else{
+            console.log(results);
+            res.json(results);
+        }
     });
 });
 

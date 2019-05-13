@@ -11,16 +11,16 @@ import { FormControl, FormGroup } from '@angular/forms';
   providers: [AddressService]
 })
 export class AddressPageComponent implements OnInit {
-
   toggleUpdateButton:boolean = false;
-  addresses: Address[] = []
-    address: Address;
-    name: String;
-    address2: String;
-    district: String;
-    postal_code: Number;
-    city_id: Number;
-    id: any;
+  addresses: Address[] = [];
+  address: Address;
+  name: String;
+  id: any;
+  address2: String;
+  district: String;
+  postal_code: String;
+  fk_city_id: any;
+
 
   constructor(private addressService: AddressService) { }
 
@@ -32,7 +32,11 @@ export class AddressPageComponent implements OnInit {
 
   addAddress() {
     const newAddress = {
-        address: this.name
+      address: this.name,
+      address2: this.address2,
+      district: this.district,
+      postal_code: this.postal_code,
+      fk_city_id: this.fk_city_id
     }
     this.addressService.addAddress(newAddress).subscribe(address => {
       this.addresses.push(address);
@@ -44,7 +48,11 @@ export class AddressPageComponent implements OnInit {
 updateAddress() {
   var addresses = this.addresses;
   const newAddress = {
-    address: this.name
+    address: this.name,
+    address2: this.address2,
+    district: this.district,
+    postal_code: this.postal_code,
+    fk_city_id: this.fk_city_id
   }
   const data = {
     addressChange: newAddress,
@@ -74,9 +82,12 @@ updateAddress() {
 }
 
 updateFillIn(address: Address){
-  this.name =address.address;
+  this.name = address.address;
+  this.address2 = address.address2;
+  this.district = address.district;
+  this.postal_code = address.postal_code;
+  this.fk_city_id = address.fk_city_id;
   this.id = address.address_id;
   this.toggleUpdateButton = true;
 }
-
 }

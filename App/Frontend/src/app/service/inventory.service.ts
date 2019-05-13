@@ -24,10 +24,10 @@ export class InventoryService {
     return this.http.post(`${this.uri}/createInventory`, newInventory, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateInventory(theInventory) {
+  updateInventory(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateInventory/${theInventory.inventory_id}`, theInventory, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateInventory/${data.idSearch}`, data.inventoryChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteInventory(id){

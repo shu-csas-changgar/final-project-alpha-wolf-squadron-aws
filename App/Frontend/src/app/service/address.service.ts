@@ -24,10 +24,10 @@ export class AddressService {
     return this.http.post(`${this.uri}/createAddress`, newAddress, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateAddress(theAddress) {
+  updateAddress(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateAddress/${theAddress.address_id}`, theAddress, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateAddress/${data.idSearch}`, data.addressChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteAddress(id){

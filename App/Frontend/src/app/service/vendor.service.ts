@@ -24,10 +24,10 @@ export class VendorService {
     return this.http.post(`${this.uri}/createVendor`, newVendor, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateVendor(theVendor) {
+  updateVendor(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateVendor/${theVendor.vendor_id}`, theVendor, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateVendor/${data.idSearch}`, data.vendorChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteVendor(id){
