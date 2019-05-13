@@ -13,7 +13,7 @@ export class OfficePageComponent implements OnInit {
 
   offices: Office[] = []
   officeForm = new FormControl({
-    name : new FormControl,
+    office : new FormControl,
     phone_number : new FormControl,
     equipment_contact : new FormControl,
     fk_address_id : new FormControl

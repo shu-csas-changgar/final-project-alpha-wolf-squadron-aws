@@ -16,11 +16,11 @@ export class EmployeePageComponent implements OnInit {
     first_name: new FormControl,
     last_name: new FormControl,
     phone_number: new FormControl,
-    work_number: new FormControl,
+    work_phone_number: new FormControl,
     email: new FormControl,
     username:  new FormControl,
-    address_id: new FormControl,
-    room_id:  new FormControl
+    fk_address_id: new FormControl,
+    fk_room_id:  new FormControl
   })
   constructor(private employeesService: EmployeeService) { }
 

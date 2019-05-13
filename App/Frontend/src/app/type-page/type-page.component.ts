@@ -13,7 +13,7 @@ export class TypePageComponent implements OnInit {
 
   types: Type[] = []
   typeForm = new FormGroup({
-    name: new FormControl
+    type: new FormControl
   })
   constructor(private TypeService: TypeService) { }
 

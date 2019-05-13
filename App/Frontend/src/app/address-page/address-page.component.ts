@@ -14,7 +14,7 @@ export class AddressPageComponent implements OnInit {
 
   addresses: Address[] = []
   addressForm = new FormGroup({
-    address1: new FormControl(''),
+    address: new FormControl(''),
     address2: new FormControl(''),
     district: new FormControl(''),
     postal_code: new FormControl(''),
