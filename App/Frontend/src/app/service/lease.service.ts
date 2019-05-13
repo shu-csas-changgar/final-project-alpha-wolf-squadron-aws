@@ -15,7 +15,7 @@ export class LeaseService {
   constructor(private http: Http) { }
 
   getLease() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllLeases`).pipe(map(res => res.json()));
   }
 
   addLease(newLease) {

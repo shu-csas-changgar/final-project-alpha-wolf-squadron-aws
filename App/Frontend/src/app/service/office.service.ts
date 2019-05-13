@@ -15,7 +15,7 @@ export class OfficeService {
   constructor(private http: Http) { }
 
   getOffice() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllOffices`).pipe(map(res => res.json()));
   }
 
   addOffice(newOffice) {

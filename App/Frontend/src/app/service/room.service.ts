@@ -14,7 +14,7 @@ export class RoomService {
   constructor(private http: Http) { }
 
   getRoom() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllRooms`).pipe(map(res => res.json()));
   }
 
   addRoom(newRoom) {
