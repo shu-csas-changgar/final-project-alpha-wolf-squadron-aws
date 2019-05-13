@@ -53,7 +53,7 @@
   <form (submit)='addInventory()'>
     <div Class="form-group">
       <label>Equipment ID:</label>
-      <input type="text" [(ngModel)]="name" name="fk_equipment_id" class="form-control" required>
+      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
       <label>Employee ID:</label>
       <input type="text" [(ngModel)]="fk_employee_id" name="fk_employee_id" class="form-control" required>
       <label>Room ID:</label>
@@ -66,7 +66,7 @@
   <form (submit)='updateInventory()'>
     <div Class="form-group">
       <label>Equipment ID:</label>
-      <input type="text" [(ngModel)]="name" name="fk_equipment_id" class="form-control" required>
+      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
       <label>Employee ID:</label>
       <input type="text" [(ngModel)]="fk_employee_id" name="fk_employee_id" class="form-control" required>
       <label>Room ID:</label>

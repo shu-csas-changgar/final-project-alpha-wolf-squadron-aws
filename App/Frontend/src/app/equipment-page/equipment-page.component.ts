@@ -36,6 +36,7 @@ export class EquipmentPageComponent implements OnInit {
       name: this.name,
       active : this.active,
       warranty_end_date : this.warranty_end_date,
+      fk_vendor_id : this.fk_vendor_id,
       fk_lease_id : this.fk_lease_id,
       fk_type_id : this.fk_type_id
     }
@@ -52,6 +53,7 @@ updateEquipment() {
       name: this.name,
       active : this.active,
       warranty_end_date : this.warranty_end_date,
+      fk_vendor_id : this.fk_vendor_id,
       fk_lease_id : this.fk_lease_id,
       fk_type_id : this.fk_type_id
   }

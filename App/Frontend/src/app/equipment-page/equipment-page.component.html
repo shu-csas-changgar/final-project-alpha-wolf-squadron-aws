@@ -12,16 +12,16 @@
     <th>Last Updated</th>
     <th>Update/Delete</th>
   </thead>
-  <tr tableCol *ngFor="let equipment of equipments">
-    <td>{{equipment.equipment_id}}</td>
-    <td>{{equipment.name}}</td>
-    <td>{{equipment.active}}</td>
+  <tr tableCol *ngFor="let singleEquipment of equipment">
+    <td>{{singleEquipment.equipment_id}}</td>
+    <td>{{singleEquipment.name}}</td>
+    <td>{{singleEquipment.active}}</td>
     <td>
-      <ng-template *ngIf="equipment.warranty_end_date != null;then showWarr; else notShowWarr">
+      <ng-template *ngIf="singleEquipment.warranty_end_date != null;then showWarr; else notShowWarr">
       </ng-template>
       <ng-template #showWarr>
         <p>
-          {{equipment.warranty_end_date}}
+          {{singleEquipment.warranty_end_date}}
         </p>
       </ng-template>
       <ng-template #notShowWarr>
@@ -31,11 +31,11 @@
       </ng-template>
     </td>
     <td>
-      <ng-template *ngIf="equipment.fk_lease_id != null;then showLease; else notShowLease">
+      <ng-template *ngIf="singleEquipment.fk_lease_id != null;then showLease; else notShowLease">
       </ng-template>
       <ng-template #showLease>
         <p>
-          {{equipment.fk_lease_id}}
+          {{singleEquipment.fk_lease_id}}
         </p>
       </ng-template>
       <ng-template #notShowLease>
@@ -44,13 +44,13 @@
         </p>
       </ng-template>
     </td>
-    <td>{{equipment.fk_vendor_id}}</td>
-    <td>{{equipment.fk_type_id}}</td>
-    <td>{{equipment.date_created}}</td>
-    <td>{{equipment.last_update}}</td>
+    <td>{{singleEquipment.fk_vendor_id}}</td>
+    <td>{{singleEquipment.fk_type_id}}</td>
+    <td>{{singleEquipment.date_created}}</td>
+    <td>{{singleEquipment.last_update}}</td>
     <td class='update-delete-btn'>
-      <button (click)='updateFillIn(equipment)'>update</button>
-      <button (click)='deleteEquipment(equipment.equipment_id)'>delete</button>
+      <button (click)='updateFillIn(singleEquipment)'>update</button>
+      <button (click)='deleteEquipment(singleEquipment.equipment_id)'>delete</button>
     </td>
   </tr>
 </table>
@@ -59,7 +59,7 @@
   <form (submit)='addEquipment()'>
     <div Class="form-group">
       <label>Equipment Name:</label>
-      <input type="text" [(ngModel)]="name" name="equipment" class="form-control" required>
+      <input type="text" [(ngModel)]="name" name="singleEquipment" class="form-control" required>
       <label>Active?:</label>
       <input type="text" [(ngModel)]="active" name="active" class="form-control" required>
       <label>Warranty End Date:</label>
@@ -70,8 +70,6 @@
       <input type="text" [(ngModel)]="fk_vendor_id" name="fk_vendor_id" class="form-control" required>
       <label>Type ID:</label>
       <input type="text" [(ngModel)]="fk_type_id" name="fk_type_id" class="form-control" required>
-      <label>Equipmnet ID:</label>
-      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
     </div>
     <input type="submit" class="btn btn btn-success" value="Add">
   </form>
@@ -80,7 +78,7 @@
   <form (submit)='updateEquipment()'>
     <div Class="form-group">
       <label>Equipment Name:</label>
-      <input type="text" [(ngModel)]="name" name="equipment" class="form-control" required>
+      <input type="text" [(ngModel)]="name" name="singleEquipment" class="form-control" required>
       <label>Active?:</label>
       <input type="text" [(ngModel)]="active" name="active" class="form-control" required>
       <label>Warranty End Date:</label>
@@ -91,8 +89,6 @@
       <input type="text" [(ngModel)]="fk_vendor_id" name="fk_vendor_id" class="form-control" required>
       <label>Type ID:</label>
       <input type="text" [(ngModel)]="fk_type_id" name="fk_type_id" class="form-control" required>
-      <label>Equipmnet ID:</label>
-      <input type="text" [(ngModel)]="fk_equipment_id" name="fk_equipment_id" class="form-control" required>
     </div>
     <input type="submit" class="btn btn btn-success" value="UPDATE">
   </form>
