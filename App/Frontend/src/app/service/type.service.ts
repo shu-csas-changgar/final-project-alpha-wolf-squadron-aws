@@ -14,7 +14,7 @@ export class TypeService {
   constructor(private http: Http) { }
 
   getType() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllTypes`).pipe(map(res => res.json()));
   }
 
   addType(newType) {

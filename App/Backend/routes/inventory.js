@@ -24,7 +24,7 @@ inventory.post('/createInventory', (req, res)=>{
 });
 
 //Select all inventory
-inventory.get('/readAllInventory', (req, res)=>{
+inventory.get('/readAllInventories', (req, res)=>{
             let sql = 'SELECT * From inventory'
             db.query(sql, (err, results) =>{
                 if(err){

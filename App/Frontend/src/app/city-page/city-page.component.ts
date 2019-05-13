@@ -15,7 +15,7 @@ export class CityPageComponent implements OnInit {
   cities: City[] = [];
   city: City;
   name: String;
-  fk_country_id:any;
+  fk_country_id: any;
   id: any;
 
   constructor(private cityService: CityService) { }

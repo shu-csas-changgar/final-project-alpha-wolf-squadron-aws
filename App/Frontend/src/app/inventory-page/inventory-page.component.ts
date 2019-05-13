@@ -11,37 +11,74 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class InventoryPageComponent implements OnInit {
 
-  inventories: Inventory[] = []
-  inventoryForm = new FormGroup({
-    fk_equipment_id: new FormControl,
-    fk_employee_id: new FormControl,
-    fk_room_id: new FormControl
-  })
-  constructor(private InventoryService: InventoryService) { }
+  inventories: Inventory[] = [];
+  inventory: Inventory;
+  fk_equipment_id: any;
+  fk_employee_id: any;
+  fk_room_id: any;
+  toggleUpdateButton:boolean = false;
+  id: any;
+  constructor(private inventoryService: InventoryService) { }
 
   ngOnInit() {
-    this.fetchInventory();
-  }
-
-  addInventory() {
-    var jsonFormat = JSON.stringify(this.inventoryForm.getRawValue());
-    this.InventoryService.addInventory(jsonFormat).subscribe(Employee => {
-      this.inventories.push(Employee);
-    }
-    );
-    console.log(jsonFormat);
-  }
-
-  fetchInventory() {
-    this.InventoryService
+    this.inventoryService
     .getInventory()
-    .subscribe((data: Inventory[]) => {
-      this.inventories = data;
-    });
+    .subscribe(inventories => this.inventories = inventories);
   }
 
-  createSubmit(){
-    console.log(this.inventoryForm.value)
+  addinventory() {
+    const newinventory = {
+      fk_equipment_id: this.fk_equipment_id,
+      fk_employee_id: this.fk_employee_id,
+      fk_room_id: this.fk_room_id
+    }
+    this.inventoryService.addInventory(newinventory).subscribe(inventory => {
+      this.inventories.push(inventory);
+      this.inventoryService
+    .getInventory()
+    .subscribe(inventories => this.inventories = inventories);
+    });
+}
+updateinventory() {
+  var inventories = this.inventories;
+  const newInventory = {
+      fk_equipment_id: this.fk_equipment_id,
+      fk_employee_id: this.fk_employee_id,
+      fk_room_id: this.fk_room_id
   }
+  const data = {
+    inventoryChange: newInventory,
+    idSearch: this.id
+  }
+  this.inventoryService.updateInventory(data).subscribe(inventory => {
+    for(var i = 0; i < inventories.length; i++ ){
+      if (inventories[i].inventory_id == inventory.inventory_id){
+        inventories[i] = inventory;
+      }
+    }
+    this.inventoryService
+    .getInventory()
+    .subscribe(inventories => this.inventories = inventories);
+    });
+    this.toggleUpdateButton = false;
+  }
+  deleteInventory(id: any) {
+    var inventories = this.inventories;
+  this.inventoryService.deleteInventory(id).subscribe(data =>{
+    for(var i = 0; i < inventories.length; i++){
+      if(inventories[i].inventory_id == id){
+        inventories.splice(i, 1);
+      }
+    }
+  });
+}
+
+updateFillIn(inventory: Inventory){
+  this.fk_equipment_id = inventory.fk_equipment_id,
+  this.fk_employee_id = inventory.fk_employee_id,
+  this.fk_room_id = inventory.fk_room_id
+  this.id = inventory.inventory_id;
+  this.toggleUpdateButton = true;
+}
 
 }
