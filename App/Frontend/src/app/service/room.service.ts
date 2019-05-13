@@ -23,10 +23,10 @@ export class RoomService {
     return this.http.post(`${this.uri}/createRoom`, newRoom, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateRoom(theRoom) {
+  updateRoom(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateRoom/${theRoom.room_id}`, theRoom, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateRoom/${data.idSearch}`, data.roomChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteRoom(id){

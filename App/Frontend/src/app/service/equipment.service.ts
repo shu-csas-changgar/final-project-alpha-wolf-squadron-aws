@@ -24,10 +24,10 @@ export class EquipmentService {
     return this.http.post(`${this.uri}/createEquipment`, newEquipment, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateEquipment(theEquipment) {
+  updateEquipment(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateEquipment/${theEquipment.equipment_id}`, theEquipment, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateEquipment/${data.idSearch}`, data.equipmentChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteEquipment(id){

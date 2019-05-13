@@ -12,50 +12,69 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class CityPageComponent implements OnInit {
 
   toggleUpdateButton:boolean = false;
-  cities: City[] = []
-  cityForm = new FormGroup({
-    city: new FormControl(''),
-    fk_country_id: new FormControl('')
-  })
+  cities: City[] = [];
+  city: City;
+  name: String;
+  fk_country_id:any;
+  id: any;
 
   constructor(private cityService: CityService) { }
 
   ngOnInit() {
-    this.fetchCity();
+    this.cityService
+    .getCity()
+    .subscribe(cities => this.cities = cities);
   }
 
   addCity() {
-    var jsonFormat = JSON.stringify(this.cityForm.getRawValue());
-    this.cityService.addCity(jsonFormat).subscribe(City => {
-      this.cities.push(City);
+    const newCity = {
+      city: this.name,
+      fk_country_id: this.fk_country_id
     }
-    );
-    console.log(jsonFormat);
+    this.cityService.addCity(newCity).subscribe(city => {
+      this.cities.push(city);
+      this.cityService
+    .getCity()
+    .subscribe(cities => this.cities = cities);
+    });
+}
+updateCity() {
+  var cities = this.cities;
+  const newCity = {
+    city: this.name,
+    fk_country_id: this.fk_country_id
   }
-
-  fetchCity() {
+  const data = {
+    cityChange: newCity,
+    idSearch: this.id
+  }
+  this.cityService.updateCity(data).subscribe(city => {
+    for(var i = 0; i < cities.length; i++ ){
+      if (cities[i].city_id == city.city_id){
+        cities[i] = city;
+      }
+    }
     this.cityService
     .getCity()
-    .subscribe((data: City[]) => {
-      this.cities = data;
+    .subscribe(cities => this.cities = cities);
     });
+    this.toggleUpdateButton = false;
   }
-  
-  updateSubmit(c: City){
-    this.cityForm.patchValue({
-      city: c.city_id,
-      country_id: c.fk_country_id
-    })
-  }
+  deleteCity(id: any) {
+    var cities = this.cities;
+  this.cityService.deleteCity(id).subscribe(data =>{
+    for(var i = 0; i < cities.length; i++){
+      if(cities[i].city_id == id){
+        cities.splice(i, 1);
+      }
+    }
+  });
+}
 
-  toggleUpdateAdd(){
-    this.toggleUpdateButton = !this.toggleUpdateButton
-  }
-
-  deleteSubmit(city: City){
-    console.log(city.city_id);
-  }
-  onSubmit(){
-    console.log(this.cityForm.value)
-  }
+updateFillIn(city: City){
+  this.name =city.city;
+  this.fk_country_id = city.fk_country_id;
+  this.id = city.city_id;
+  this.toggleUpdateButton = true;
+}
 }

@@ -11,42 +11,74 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class EmployeePageComponent implements OnInit {
 
-  employees: Employee[] = []
-  employeeForm = new FormGroup({
-    first_name: new FormControl,
-    last_name: new FormControl,
-    phone_number: new FormControl,
-    work_phone_number: new FormControl,
-    email: new FormControl,
-    username:  new FormControl,
-    fk_address_id: new FormControl,
-    fk_room_id:  new FormControl
-  })
-  constructor(private employeesService: EmployeeService) { }
+  employees: Employee[] = [];
+  employee: Employee;
+  first_name: String;
+  last_name: String;
+  phone_number: String;
+  work_phone_number: String;
+  email: String;
+  username: String;
+  fk_address_id: any;
+  fk_room_id: any;
+  toggleUpdateButton:boolean = false;
+  id: any;
+
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.fetchEmployee();
+    this.employeeService
+    .getEmployee()
+    .subscribe(employees => this.employees = employees);
   }
 
   addEmployee() {
-    var jsonFormat = JSON.stringify(this.employeeForm.getRawValue());
-    this.employeesService.addEmployee(jsonFormat).subscribe(Employee => {
-      this.employees.push(Employee);
+    const newEmployee = {
+        employee: this.name
     }
-    );
-    console.log(jsonFormat);
-  }
-
-  fetchEmployee() {
-    this.employeesService
+    this.EmployeeService.addEmployee(newEmployee).subscribe(Employee => {
+      this.employees.push(Employee);
+      this.EmployeeService
     .getEmployee()
-    .subscribe((data: Employee[]) => {
-      this.employees = data;
+    .subscribe(employees => this.employees = employees);
     });
+}
+updateEmployee() {
+  var employees = this.employees;
+  const newEmployee = {
+    Employee: this.name
   }
+  const data = {
+    EmployeeChange: newEmployee,
+    idSearch: this.id
+  }
+  this.EmployeeService.updateEmployee(data).subscribe(Employee => {
+    for(var i = 0; i < employees.length; i++ ){
+      if (employees[i].Employee_id == Employee.Employee_id){
+        employees[i] = Employee;
+      }
+    }
+    this.EmployeeService
+    .getEmployee()
+    .subscribe(employees => this.employees = employees);
+    });
+    this.toggleUpdateButton = false;
+  }
+  deleteEmployee(id: any) {
+    var employees = this.employees;
+  this.EmployeeService.deleteEmployee(id).subscribe(data =>{
+    for(var i = 0; i < employees.length; i++){
+      if(employees[i].Employee_id == id){
+        employees.splice(i, 1);
+      }
+    }
+  });
+}
 
-  createSubmit(){
-    console.log(this.employeeForm.value)
-  }
+updateFillIn(Employee: Employee){
+  this.name =Employee.Employee;
+  this.id = Employee.Employee_id;
+  this.toggleUpdateButton = true;
+}
 
 }

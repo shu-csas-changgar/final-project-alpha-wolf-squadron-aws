@@ -23,10 +23,10 @@ export class EmployeeService {
     return this.http.post(`${this.uri}/createEmployee`, newEmployee, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateEmployee(theEmployee) {
+  updateEmployee(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateEmployee/${theEmployee.employee_id}`, theEmployee, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateEmployee/${data.idSearch}`, data.employeeChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteEmployee(id){

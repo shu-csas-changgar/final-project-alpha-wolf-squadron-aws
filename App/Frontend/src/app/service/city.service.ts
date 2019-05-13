@@ -23,10 +23,10 @@ export class CityService {
     return this.http.post(`${this.uri}/createCity`, newCity, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateCity(theCity) {
+  updateCity(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateCity/${theCity.city_id}`, theCity, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateCity/${data.idSearch}`, data.cityChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteCity(id){

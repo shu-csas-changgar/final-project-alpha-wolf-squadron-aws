@@ -23,10 +23,10 @@ export class TypeService {
     return this.http.post(`${this.uri}/createType`, newType, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateType(theType) {
+  updateType(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateType/${theType.type_id}`, theType, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateType/${data.idSearch}`, data.typeChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteType(id){

@@ -24,10 +24,10 @@ export class LeaseService {
     return this.http.post(`${this.uri}/createLease`, newLease, {headers: headers}).pipe(map(res => res.json()));
   }
 
-  updateLease(theLease) {
+  updateLease(data) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(`${this.uri}/updateLease/${theLease.lease_id}`, theLease, {headers: headers}).pipe(map(res => res.json()));
+    return this.http.put(`${this.uri}/updateLease/${data.idSearch}`, data.leaseChange, {headers: headers}).pipe(map(res => res.json()));
   }
 
   deleteLease(id){
