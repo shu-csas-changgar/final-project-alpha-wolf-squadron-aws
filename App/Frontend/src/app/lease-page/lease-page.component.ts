@@ -14,9 +14,9 @@ export class LeasePageComponent implements OnInit {
   toggleUpdateButton:boolean = false;
   leases: Lease[] = [];
   lease: Lease;
-    start_date: String;
-    end_date : String;
-    id: any;
+  start_date: String;
+  end_date : String;
+  id: any;
 
   constructor(private LeaseService: LeaseService) { }
 

@@ -28,7 +28,10 @@ export class VendorPageComponent implements OnInit {
 
   addVendor() {
     const newVendor = {
-        vendor: this.name
+        vendor: this.name,
+        phone: this.name,
+        email: this.email,
+        fk_address_id: this.fk_address_id
     }
     this.VendorService.addVendor(newVendor).subscribe(vendor => {
       this.vendors.push(vendor);
@@ -40,7 +43,10 @@ export class VendorPageComponent implements OnInit {
 updateVendor() {
   var vendors = this.vendors;
   const newVendor = {
-    vendor: this.name
+    vendor: this.name,
+    phone: this.name,
+    email: this.email,
+    fk_address_id: this.fk_address_id
   }
   const data = {
     vendorChange: newVendor,
