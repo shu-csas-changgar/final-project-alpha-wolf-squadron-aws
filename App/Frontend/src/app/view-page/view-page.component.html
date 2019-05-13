@@ -19,36 +19,32 @@
     </td>
     <td>{{view.type}}</td>
     <td>{{view.active}}</td>
-    <td>{{view.fk_lease_id}}</td>
-    <td>{{view.vendor}}</td>
     <td>
-      <ng-template
-        *ngIf="view.fk_employee_id != null;then show; else notShow">
-      </ng-template>
+      <ng-template *ngIf="view.fk_lease_id != null;then show; else notShow"></ng-template>
       <ng-template #show>
-        <p>
-          {{view.fk_employee_id}}
-       </p>
+        {{view.fk_lease_id}}
       </ng-template>
       <ng-template #notShow>
-        <p>
-            N/A
-        </p>
+        <p>N/A</p>
+      </ng-template>
+    </td>
+    <td>{{view.vendor}}</td>
+    <td>
+      <ng-template *ngIf="view.fk_employee_id != null;then show; else notShow"></ng-template>
+      <ng-template #show>
+        {{view.fk_employee_id}}
+      </ng-template>
+      <ng-template #notShow>
+        <p>N/A</p>
       </ng-template>
     </td>
     <td>
-      <ng-template
-        *ngIf="view.fk_room_id != null;then show; else notShow">
-      </ng-template>
+      <ng-template *ngIf="view.fk_room_id != null;then show; else notShow"></ng-template>      
       <ng-template #show>
-        <p>
-          {{view.fk_room_id}}
-        </p>
+        {{view.fk_room_id}}
       </ng-template>
       <ng-template #notShow>
-        <p>
-          N/A
-        </p>
+        <p>N/A</p>
       </ng-template>
     </td>
 </table>
