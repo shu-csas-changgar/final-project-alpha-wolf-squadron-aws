@@ -31,14 +31,16 @@ export class CountryPageComponent implements OnInit {
 
   addCountry() {
     this.countryService.addCountry(this.countryForm.value).subscribe();
+      this.fetchCountry();
+}
+updateCountry() {
+  this.countryService.updateCountry(this.countryForm.value).subscribe();
     this.fetchCountry();
 
-  }
-
-
+}
    deleteCountry(id: any) {
     this.countryService.deleteCountry(id).subscribe();
-    this.fetchCountry();
+      this.fetchCountry();
 
   }
 

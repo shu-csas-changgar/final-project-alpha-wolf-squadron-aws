@@ -23,6 +23,12 @@ export class CountryService {
     return this.http.post(`${this.uri}/createCountry`, newCountry, {headers: headers}).pipe(map(res => res.json()));
   }
 
+  updateCountry(theCountry) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateCountry` + theCountry.country_id, theCountry, {headers: headers}).pipe(map(res => res.json()));
+  }
+
   deleteCountry(id){
     return this.http.delete(`${this.uri}/deleteCountry/` + id)
   }
