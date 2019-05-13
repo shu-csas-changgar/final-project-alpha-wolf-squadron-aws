@@ -45,13 +45,13 @@
   </table>
   <form [formGroup]='inventoryForm' (ngSubmit)='addInventory()'>
     <label>
-      Equipment ID:<br><input type="text" formControlName="equipment_id"><br>
+      Equipment ID:<br><input type="text" formControlName="fk_equipment_id"><br>
     </label>
     <label>
-      Employee ID:<br><input type="text" formControlName="employee_id"><br>
+      Employee ID:<br><input type="text" formControlName="fk_employee_id"><br>
     </label>
     <label>
-      Room ID:<br><input type="text" formControlName="room_id"><br>
+      Room ID:<br><input type="text" formControlName="fk_room_id"><br>
     </label>
     <button type="submit" [disabled] ="!inventoryForm.valid">ADD</button>
   </form>
