@@ -13,7 +13,7 @@
     <td>{{country.date_created}}</td>
     <td>{{country.last_update}}</td>
     <td class= 'update-delete-btn'>
-      <button (click) ='updateSubmit(country)'>update</button>
+      <button (click) ='toggleUpdateAdd()'>update</button>
       <button (click) ='deleteCountry(country.country_id)'>delete</button>
     </td>
   </tr>
@@ -23,5 +23,7 @@
     <label>Country Name</label>
     <input type = "text" [(ngModel)] = "name" name = "country" class = "form-control" required>
   </div>
-  <input type = "submit" class = "btn btn btn-success" value = "Add">
+    <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+    <ng-template #show><input type = "submit" class = "btn btn btn-success" value = "Add"></ng-template>
+    <ng-template #notShow><input (submit) = 'updateCountry()' class = "btn btn btn-success" value = "Update"></ng-template>
 </form>

@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CountryPageComponent implements OnInit {
 
+  toggleUpdateButton:boolean = false;
   countries: Country[] = [];
   country: Country;
   name: String;
@@ -58,6 +59,10 @@ updateCountry() {
     }
   });
 }
+
+  toggleUpdateAdd(){
+    this.toggleUpdateButton = !this.toggleUpdateButton
+  }
 
 
 }

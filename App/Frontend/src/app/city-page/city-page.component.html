@@ -15,7 +15,7 @@
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
     <td class='update-delete-btn'>
-      <button type ="button" (click)='updateSubmit(city)'>update</button>
+      <button type ="button" (click)='toggleUpdateAdd()'>update</button>
       <button type="button" (click)='deleteSubmit(city)'>delete</button>
     </td>
   </tr>
@@ -27,5 +27,7 @@
   <label>
     Country ID:<br><input type="text" formControlName="fk_country_id"><br>
   </label>
-  <button type="ngSubmit" [disabled]="!cityForm.valid">ADD</button>
+  <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+  <ng-template #show><button type="submit" [disabled]="!cityForm.valid">ADD</button></ng-template>
+  <ng-template #notShow><button (click)="updateCity()" [disabled]="!cityForm.valid">UPDATE</button></ng-template>
 </form>
