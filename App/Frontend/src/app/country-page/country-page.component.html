@@ -25,5 +25,5 @@
   </div>
     <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
     <ng-template #show><input type = "submit" class = "btn btn btn-success" value = "Add"></ng-template>
-    <ng-template #notShow><input (submit) = 'updateCountry()' class = "btn btn btn-success" value = "Update"></ng-template>
+    <ng-template #notShow><button (click)="updateCountry()" [disabled]="!countryForm.valid">UPDATE</button></ng-template>
 </form>
