@@ -47,8 +47,9 @@ updateCountry() {
       }
     }
   });
-
+  this.toggleUpdateButton = !this.toggleUpdateButton;
 }
+
   deleteCountry(id: any) {
     var countries = this.countries;
   this.countryService.deleteCountry(id).subscribe(data =>{
@@ -60,12 +61,8 @@ updateCountry() {
   });
   }
 
-
   updateFillIn(country: Country){
     this.name = country.country;
-  }
-
-  toggleUpdateAdd(){
-    this.toggleUpdateButton = !this.toggleUpdateButton
+    this.toggleUpdateButton = !this.toggleUpdateButton;
   }
 }
