@@ -14,7 +14,7 @@ export class CityService {
   constructor(private http: Http) { }
 
   getCity() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCities`).pipe(map(res => res.json()));
   }
 
   addCity(newCity) {

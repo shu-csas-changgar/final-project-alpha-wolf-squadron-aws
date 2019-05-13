@@ -15,7 +15,7 @@ export class AddressService {
   constructor(private http: Http) { }
 
   getAddress() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllAddresses`).pipe(map(res => res.json()));
   }
 
   addAddress(newAddress) {

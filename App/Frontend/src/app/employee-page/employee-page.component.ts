@@ -19,6 +19,7 @@ export class EmployeePageComponent implements OnInit {
   work_phone_number: String;
   email: String;
   username: String;
+  password: String;
   fk_address_id: any;
   fk_room_id: any;
   toggleUpdateButton:boolean = false;
@@ -34,11 +35,19 @@ export class EmployeePageComponent implements OnInit {
 
   addEmployee() {
     const newEmployee = {
-        employee: this.name
+      first_name: this.first_name,
+      last_name: this.last_name,
+      phone_number: this.phone_number,
+      work_phone_number: this.work_phone_number,
+      email: this.email,
+      username: this.username,
+      password: this.password,
+      fk_address_id: this.fk_address_id,
+      fk_room_id: this.fk_room_id
     }
-    this.EmployeeService.addEmployee(newEmployee).subscribe(Employee => {
-      this.employees.push(Employee);
-      this.EmployeeService
+    this.employeeService.addEmployee(newEmployee).subscribe(employee => {
+      this.employees.push(employee);
+      this.employeeService
     .getEmployee()
     .subscribe(employees => this.employees = employees);
     });
@@ -46,19 +55,27 @@ export class EmployeePageComponent implements OnInit {
 updateEmployee() {
   var employees = this.employees;
   const newEmployee = {
-    Employee: this.name
+      first_name: this.first_name,
+      last_name: this.last_name,
+      phone_number: this.phone_number,
+      work_phone_number: this.work_phone_number,
+      email: this.email,
+      username: this.username,
+      password: this.password,
+      fk_address_id: this.fk_address_id,
+      fk_room_id: this.fk_room_id
   }
   const data = {
-    EmployeeChange: newEmployee,
+    employeeChange: newEmployee,
     idSearch: this.id
   }
-  this.EmployeeService.updateEmployee(data).subscribe(Employee => {
+  this.employeeService.updateEmployee(data).subscribe(employee => {
     for(var i = 0; i < employees.length; i++ ){
-      if (employees[i].Employee_id == Employee.Employee_id){
-        employees[i] = Employee;
+      if (employees[i].employee_id == employee.employee_id){
+        employees[i] = employee;
       }
     }
-    this.EmployeeService
+    this.employeeService
     .getEmployee()
     .subscribe(employees => this.employees = employees);
     });
@@ -66,18 +83,25 @@ updateEmployee() {
   }
   deleteEmployee(id: any) {
     var employees = this.employees;
-  this.EmployeeService.deleteEmployee(id).subscribe(data =>{
+  this.employeeService.deleteEmployee(id).subscribe(data =>{
     for(var i = 0; i < employees.length; i++){
-      if(employees[i].Employee_id == id){
+      if(employees[i].employee_id == id){
         employees.splice(i, 1);
       }
     }
   });
 }
 
-updateFillIn(Employee: Employee){
-  this.name =Employee.Employee;
-  this.id = Employee.Employee_id;
+updateFillIn(employee: Employee){
+  this.first_name = employee.first_name,
+  this.last_name = employee.last_name,
+  this.phone_number = employee.phone_number,
+  this.work_phone_number = employee.work_phone_number,
+  this.email = employee.email,
+  this.username = employee.username,
+  this.fk_address_id = employee.fk_address_id,
+  this.fk_room_id = employee.fk_room_id
+  this.id = employee.employee_id;
   this.toggleUpdateButton = true;
 }
 

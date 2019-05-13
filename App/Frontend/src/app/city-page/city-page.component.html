@@ -15,14 +15,14 @@
     <td>{{city.date_created}}</td>
     <td>{{city.last_update}}</td>
     <td class='update-delete-btn'>
-      <button type ="button" (click)='updateFillIn()'>update</button>
+      <button type ="button" (click)='updateFillIn(city)'>update</button>
       <button type="button" (click)='deleteCity(city.city_id)'>delete</button>
     </td>
   </tr>
 </table>
 <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
 <ng-template #show>
-  <form (submit)='addaddress()'>
+  <form (submit)='addCity()'>
     <div Class="form-group">
       <label>City Name:</label>
       <input type="text" [(ngModel)]="name" name="city" class="form-control" required>
@@ -33,7 +33,7 @@
   </form>
 </ng-template>
 <ng-template #notShow>
-  <form (submit)='updateAddress()'>
+  <form (submit)='updateCity()'>
     <div Class="form-group">
       <label>City Name:</label>
       <input type="text" [(ngModel)]="name" name="city" class="form-control" required>

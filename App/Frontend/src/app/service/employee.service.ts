@@ -14,7 +14,7 @@ export class EmployeeService {
   constructor(private http: Http) { }
 
   getEmployee() {
-    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllEmployees`).pipe(map(res => res.json()));
   }
 
   addEmployee(newEmployee) {

@@ -39,7 +39,7 @@
   <form (submit)='addEmployee()'>
     <div Class="form-group">
       <label>First Name:</label>
-      <input type="text" [(ngModel)]="name" name="first_name" class="form-control" required>
+      <input type="text" [(ngModel)]="first_name" name="first_name" class="form-control" required>
       <label>Last Name:</label>
       <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control" required>
       <label>Phone Number::</label>
@@ -50,6 +50,8 @@
       <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
       <label>Username:</label>
       <input type="text" [(ngModel)]="username" name="username" class="form-control" required>
+      <label>Password:</label>
+      <input type="text" [(ngModel)]="password" name="password" class="form-control" required>
       <label>Address ID:</label>
       <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
       <label>Room ID:</label>
@@ -62,7 +64,7 @@
   <form (submit)='updateEmployee()'>
     <div Class="form-group">
       <label>First Name:</label>
-      <input type="text" [(ngModel)]="name" name="first_name" class="form-control" required>
+      <input type="text" [(ngModel)]="first_name" name="first_name" class="form-control" required>
       <label>Last Name:</label>
       <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control" required>
       <label>Phone Number::</label>
@@ -73,6 +75,8 @@
       <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
       <label>Username:</label>
       <input type="text" [(ngModel)]="username" name="username" class="form-control" required>
+      <label>Password:</label>
+      <input type="text" [(ngModel)]="password" name="password" class="form-control" required>
       <label>Address ID:</label>
       <input type="text" [(ngModel)]="fk_address_id" name="fk_address_id" class="form-control" required>
       <label>Room ID:</label>
