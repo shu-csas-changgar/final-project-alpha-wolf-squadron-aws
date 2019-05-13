@@ -14,12 +14,22 @@ export class EmployeeService {
   constructor(private http: Http) { }
 
   getEmployee() {
-    return this.http.get(`${this.uri}/readAllEmployees`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addEmployee(newEmployee) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createEmployee`, newEmployee, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateEmployee(theEmployee) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateEmployee/${theEmployee.employee_id}`, theEmployee, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteEmployee(id){
+    return this.http.delete(`${this.uri}/deleteEmployee/${id}`)
   }
 }

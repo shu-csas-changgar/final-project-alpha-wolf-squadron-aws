@@ -14,12 +14,22 @@ export class CityService {
   constructor(private http: Http) { }
 
   getCity() {
-    return this.http.get(`${this.uri}/readAllCities`).pipe(map(res => res.json()));
+    return this.http.get(`${this.uri}/readAllCountries`).pipe(map(res => res.json()));
   }
 
   addCity(newCity) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${this.uri}/createCity`, newCity, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  updateCity(theCity) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.uri}/updateCity/${theCity.city_id}`, theCity, {headers: headers}).pipe(map(res => res.json()));
+  }
+
+  deleteCity(id){
+    return this.http.delete(`${this.uri}/deleteCity/${id}`)
   }
 }
