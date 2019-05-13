@@ -13,35 +13,48 @@ export class CountryPageComponent implements OnInit {
 
   toggleUpdateButton:boolean = false;
   countries: Country[] = [];
-  countryForm = new FormGroup({
-    country : new FormControl('')
-  });
+  country: Country;
+  name: String;
+
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
-    this.fetchCountry();
-  }
-
-  fetchCountry() {
     this.countryService
     .getCountry()
-    .subscribe((data: Country[]) => {
-      this.countries = data;
-    });
+    .subscribe(countries => this.countries = countries);
   }
 
   addCountry() {
-    this.countryService.addCountry(this.countryForm.value).subscribe();
-    this.fetchCountry();
+    const newCountry = {
+        country: this.name
+    }
+    this.countryService.addCountry(newCountry).subscribe(country => {
+      this.countries.push(country);
+      this.countryService
+    .getCountry()
+    .subscribe(countries => this.countries = countries);
+    });
+}
+updateCountry() {
+  const newCountry = {
+    country: this.name
+}
+  this.countryService.updateCountry(newCountry).subscribe();
+  this.countryService
+  .getCountry()
+  .subscribe(countries => this.countries = countries);
 
-  }
-
-
+}
    deleteCountry(id: any) {
-    this.countryService.deleteCountry(id).subscribe();
-    this.fetchCountry();
-
-  }
+     var countries = this.countries;
+    this.countryService.deleteCountry(id).subscribe(data =>{
+      for(var i = 0; i < countries.length; i++){
+        if(countries[i].country_id == id){
+          countries.splice(i, 1);
+        }
+      }
+  });
+}
 
   toggleUpdateAdd(){
     this.toggleUpdateButton = !this.toggleUpdateButton

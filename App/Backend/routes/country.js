@@ -30,7 +30,7 @@ country.get('/readAllCountries', (req, res)=>{
                     console.log(err)
                 }
                 else{
-                    console.log(results);
+                    //console.log(results);
                     res.json(results);
                 }
             });
@@ -76,7 +76,11 @@ country.delete('/deleteCountry/:id', (req, res) => {
     let query = db.query(sql, (err, results) => {
         if(err){
             res.json({msg: "Error: Entry could not be deleted"});
-            console.log(err)
+            console.log(err);
+        }
+        else{
+            res.json(results);
+            console.log(results);
         }
     });
 });

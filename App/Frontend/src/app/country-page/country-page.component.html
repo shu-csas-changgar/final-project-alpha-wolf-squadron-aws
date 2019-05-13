@@ -18,9 +18,12 @@
     </td>
   </tr>
 </table>
-<form [formGroup]= 'countryForm' (ngSumbit)='addCountry()'>
-  <label>Country Name: <br><input type ="text" formControlName ='country'></label><br>
-  <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
-  <ng-template #show><button type="submit" [disabled]= '!countryForm.valid'>ADD</button></ng-template>
-  <ng-template #notShow><button (click)="updateCountry()" [disabled]="!countryForm.valid">UPDATE</button></ng-template>
+<form (submit) = 'addCountry()'>
+  <div Class = "form-group">
+    <label>Country Name</label>
+    <input type = "text" [(ngModel)] = "name" name = "country" class = "form-control" required>
+  </div>
+    <ng-template *ngIf="!toggleUpdateButton;then show; else notShow"></ng-template>
+    <ng-template #show><input type = "submit" class = "btn btn btn-success" value = "Add"></ng-template>
+    <ng-template #notShow><input (submit) = 'updateCountry()' class = "btn btn btn-success" value = "Update"></ng-template>
 </form>
